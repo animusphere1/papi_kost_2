@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:papi_kost/ui/constant/contantdecoration.dart';
 import 'package:supercharged/supercharged.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -7,10 +8,35 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  var hasil;
+
+  @override
+  initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: "#ff00ff".toColor(),
+        decoration: backGroundColor,
+        child: Column(
+          children: [_logoText()],
+        ));
+  }
+
+  Widget _logoText() {
+    return Container(
+      margin: EdgeInsets.all(50),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset(
+            'assets/TheJourneyWhite.png',
+            width: 200,
+            height: 100,
+          ),
+        ],
+      ),
     );
   }
 }

@@ -8,6 +8,7 @@ void main() {
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(statusBarColor: Colors.transparent),
   );
+  Paint.enableDithering = true;
   runApp(MyApp());
 }
 
