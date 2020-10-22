@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:papi_kost/ui/constant/contantdecoration.dart';
-import 'package:supercharged/supercharged.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -29,13 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
       margin: EdgeInsets.all(50),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Image.asset(
-            'assets/TheJourneyWhite.png',
-            width: 200,
-            height: 100,
-          ),
-        ],
+        children: [],
       ),
     );
   }
