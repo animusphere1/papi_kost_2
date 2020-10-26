@@ -1,34 +1,41 @@
 import 'package:flutter/material.dart';
-import 'package:papi_kost/ui/constant/contantdecoration.dart';
+import 'package:papi_kost/core/viewmodel/themeprovider.dart';
+import 'package:provider/provider.dart';
 
 class SplashScreen extends StatefulWidget {
+  int fungsi;
+
+  SplashScreen({this.fungsi = 1});
+
   @override
   _SplashScreenState createState() => _SplashScreenState();
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  var hasil;
-
-  @override
-  initState() {
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(
-        decoration: backGroundColor,
-        child: Column(
-          children: [_logoText()],
-        ));
+      color: Theme.of(context).accentColor,
+      child: Row(
+        children: [
+          Expanded(
+            child: GestureDetector(
+                onDoubleTap: () {
+                  Provider.of<ThemeProvider>(context, listen: false)
+                      .changeTheme();
+                },
+                child: _logo()),
+          ),
+          Text(widget.fungsi.toString()),
+        ],
+      ),
+    );
   }
 
-  Widget _logoText() {
+  Widget _logo() {
     return Container(
-      margin: EdgeInsets.all(50),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [],
+      child: Center(
+        child: Image.asset('assets/TheJourneyWhite.png'),
       ),
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:papi_kost/core/viewmodel/onboardprovider.dart';
+import 'package:papi_kost/core/viewmodel/themeprovider.dart';
 import 'package:papi_kost/ui/splashscreen.dart';
 import 'package:provider/provider.dart';
 
@@ -8,7 +9,7 @@ void main() {
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(statusBarColor: Colors.transparent),
   );
-  Paint.enableDithering = true;
+
   runApp(MyApp());
 }
 
@@ -23,10 +24,14 @@ class _MyAppState extends State<MyApp> {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => OnBoardProvider()),
+        ChangeNotifierProvider(create: (context) => ThemeProvider()),
       ],
-      child: MaterialApp(
-        home: SplashScreen(),
-      ),
+      child: Consumer<ThemeProvider>(builder: (context, themeProvider, _) {
+        return MaterialApp(
+          theme: themeProvider.thema,
+          home: SplashScreen(),
+        );
+      }),
     );
   }
 }
