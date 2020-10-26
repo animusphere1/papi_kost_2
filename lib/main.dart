@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:papi_kost/core/viewmodel/onboardprovider.dart';
 import 'package:papi_kost/core/viewmodel/themeprovider.dart';
-import 'package:papi_kost/ui/splashscreen.dart';
+import 'package:papi_kost/ui/router/router_generator.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -28,8 +28,10 @@ class _MyAppState extends State<MyApp> {
       ],
       child: Consumer<ThemeProvider>(builder: (context, themeProvider, _) {
         return MaterialApp(
+          debugShowCheckedModeBanner: true,
           theme: themeProvider.thema,
-          home: SplashScreen(),
+          initialRoute: RouterGenerator.routeSplash,
+          onGenerateRoute: RouterGenerator.generateRoute,
         );
       }),
     );

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:supercharged/supercharged.dart';
 
 class ThemeProvider extends ChangeNotifier {
   //atribute
@@ -16,7 +17,7 @@ class ThemeProvider extends ChangeNotifier {
   //function checking ui theme
   void checkTheme() {
     _themeData = ThemeData(
-      accentColor: Colors.blue,
+      accentColor: "#fdf5ed".toColor(),
     );
     notifyListeners();
   }
@@ -26,9 +27,5 @@ class ThemeProvider extends ChangeNotifier {
       accentColor: Colors.red,
     );
     notifyListeners();
-  }
-
-  void printHasil() {
-    print(coba);
   }
 }
