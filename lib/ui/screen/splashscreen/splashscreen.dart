@@ -9,13 +9,16 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: themeData(context).accentColor,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          _logo(),
-        ],
+    return Scaffold(
+      body: Container(
+        width: MediaQuery.of(context).size.width,
+        color: themeData(context).accentColor,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            _logo(),
+          ],
+        ),
       ),
     );
   }
@@ -23,9 +26,9 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget _logo() {
     return Container(
       margin: EdgeInsets.only(right: 10, left: 10),
-      width: 250,
       child: Image.asset(
         'assets/TheJourneyBlack.png',
+        width: MediaQuery.of(context).size.width * 0.5,
       ),
     );
   }

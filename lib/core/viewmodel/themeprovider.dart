@@ -23,9 +23,6 @@ class ThemeProvider extends ChangeNotifier {
   }
 
   void changeTheme() {
-    _themeData = _themeData = ThemeData(
-      accentColor: Colors.red,
-    );
     notifyListeners();
   }
 }

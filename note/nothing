@@ -1,0 +1,32 @@
+Widget _textField() {
+    return Scaffold(
+      resizeToAvoidBottomInset: true,
+      body: Align(
+        alignment: Alignment.bottomCenter,
+        child: Container(
+          margin: EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            color: Colors.grey,
+            borderRadius: const BorderRadius.all(
+              Radius.circular(38.0),
+            ),
+            boxShadow: <BoxShadow>[
+              BoxShadow(
+                  color: Colors.grey.withOpacity(0.2),
+                  offset: const Offset(0, 2),
+                  blurRadius: 8.0),
+            ],
+          ),
+          child: Padding(
+            padding:
+                const EdgeInsets.only(left: 16, right: 16, top: 4, bottom: 4),
+            child: TextField(
+              decoration: InputDecoration(
+                border: InputBorder.none,
+                hintText: 'nama',
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
