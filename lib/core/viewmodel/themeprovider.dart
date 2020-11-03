@@ -14,7 +14,7 @@ class ThemeProvider extends ChangeNotifier {
   //function checking ui theme
   void checkTheme() {
     _themeData = ThemeData(
-      accentColor: "#fdf5ed".toColor(),
+      backgroundColor: "#fdf5ed".toColor(),
     );
     notifyListeners();
   }

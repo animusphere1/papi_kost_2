@@ -28,8 +28,10 @@ class _OnBoardPageCoreState extends State<OnBoardPageCore> {
     return Scaffold(
       body: Stack(
         children: [
+          Container(
+            color: Theme.of(context).backgroundColor,
+          ),
           PageView.builder(
-            physics: ScrollPhysics(),
             controller: _pageController,
             onPageChanged: (index) {
               print(index);
@@ -46,7 +48,7 @@ class _OnBoardPageCoreState extends State<OnBoardPageCore> {
 }
 
 List<OnBoardPage> onBoardPageList = [
-  OnBoardPage(titleTop: "Nama 3"),
+  OnBoardPage(titleMid: "nama 1", titleTop: "Nama 3"),
   OnBoardPage(titleMid: "Nama 2", titleTop: "Nama 2"),
   OnBoardPage(titleMid: "Nama 3", titleTop: "Nama 1"),
 ];

@@ -11,7 +11,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       body: Container(
         width: MediaQuery.of(context).size.width,
-        color: Theme.of(context).accentColor,
+        color: Theme.of(context).backgroundColor,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

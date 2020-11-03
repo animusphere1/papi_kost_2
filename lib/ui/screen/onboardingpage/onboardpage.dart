@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class OnBoardPage extends StatelessWidget {
-  final titleTop;
-  final titleMid;
+  final String titleTop;
+  final String titleMid;
 
   OnBoardPage({
     this.titleTop,
@@ -12,10 +12,14 @@ class OnBoardPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Theme.of(context).accentColor,
-      child: Center(
-        child: Text(titleMid),
-      ),
-    );
+        padding: EdgeInsets.symmetric(horizontal: 20),
+        alignment: Alignment.center,
+        child: Container(
+          color: Colors.blue,
+        ));
+  }
+
+  Widget _checkBox() {
+    return CheckboxListTile(value: null, onChanged: (value) {});
   }
 }
