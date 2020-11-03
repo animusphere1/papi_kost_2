@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:papi_kost/ui/constant/constanttheme.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -12,7 +11,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       body: Container(
         width: MediaQuery.of(context).size.width,
-        color: themeData(context).accentColor,
+        color: Theme.of(context).accentColor,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

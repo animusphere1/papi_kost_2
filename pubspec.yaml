@@ -25,6 +25,12 @@ dependencies:
     sdk: flutter
   provider: ^4.3.2+2
   supercharged: ^1.10.0
+  flutter_launcher_icons: ^0.8.1
+
+flutter_icons:
+  image_path: "assets/icons/paper-plane.png" 
+  android: true
+  ios: true
   
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

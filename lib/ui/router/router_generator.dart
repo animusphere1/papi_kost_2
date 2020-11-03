@@ -4,7 +4,7 @@ import 'package:papi_kost/ui/screen/onboardingpage/onboardcorepage.dart';
 import 'package:papi_kost/ui/screen/splashscreen/splashscreen.dart';
 
 class RouterGenerator {
-  static const String routeSplash = "/";
+  static const String routeSplash = "/spalshscreen";
   static const String routeOnboard = "/onBoarding";
   static const String routeLogin = "/login";
 
@@ -25,6 +25,7 @@ class RouterGenerator {
         return MaterialPageRoute(builder: (_) => Login());
         break;
       default:
+        return MaterialPageRoute(builder: (_) => SplashScreen());
     }
   }
 }

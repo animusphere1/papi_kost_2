@@ -1,6 +1,5 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
+import 'onboardpage.dart';
 
 class OnBoardPageCore extends StatefulWidget {
   @override
@@ -14,28 +13,40 @@ class _OnBoardPageCoreState extends State<OnBoardPageCore> {
   );
 
   @override
-  Widget build(BuildContext context) {
-    return PageView.builder(
-      controller: _pageController,
-      onPageChanged: (index) {
-        print(index);
-      },
-      itemCount: _container.length,
-      itemBuilder: (context, i) {
-        return _container[i];
-      },
-    );
+  void initState() {
+    super.initState();
   }
 
-  List<Container> _container = [
-    Container(
-      color: Colors.amber,
-    ),
-    Container(
-      color: Colors.blue,
-    ),
-    Container(
-      color: Colors.cyan,
-    ),
-  ];
+  @override
+  void dispose() {
+    super.dispose();
+    _pageController.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Stack(
+        children: [
+          PageView.builder(
+            physics: ScrollPhysics(),
+            controller: _pageController,
+            onPageChanged: (index) {
+              print(index);
+            },
+            itemCount: onBoardPageList.length,
+            itemBuilder: (context, i) {
+              return onBoardPageList[i];
+            },
+          ),
+        ],
+      ),
+    );
+  }
 }
+
+List<OnBoardPage> onBoardPageList = [
+  OnBoardPage(titleTop: "Nama 3"),
+  OnBoardPage(titleMid: "Nama 2", titleTop: "Nama 2"),
+  OnBoardPage(titleMid: "Nama 3", titleTop: "Nama 1"),
+];

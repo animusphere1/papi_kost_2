@@ -7,9 +7,6 @@ class ThemeProvider extends ChangeNotifier {
   ThemeData _themeData;
   ThemeData get thema => _themeData;
 
-  String _coba = 'nama';
-  String get coba => _coba;
-
   ThemeProvider() {
     checkTheme();
   }

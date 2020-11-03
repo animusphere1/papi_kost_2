@@ -19,6 +19,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  var hasil = 0;
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
