@@ -5,7 +5,9 @@ import 'package:supercharged/supercharged.dart';
 class ThemeProvider extends ChangeNotifier {
   //atribute
   ThemeData _themeData;
-  ThemeData get thema => _themeData;
+  ThemeData get theme => _themeData;
+
+  String nama;
 
   ThemeProvider() {
     checkTheme();

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'controller.dart';
 import 'onboardpage.dart';
 
 class OnBoardPageCore extends StatefulWidget {
@@ -7,14 +8,14 @@ class OnBoardPageCore extends StatefulWidget {
 }
 
 class _OnBoardPageCoreState extends State<OnBoardPageCore> {
-  PageController _pageController = PageController(
-    initialPage: 0,
-    viewportFraction: 1,
-  );
+  PageController _pageController = PageController();
 
   @override
   void initState() {
     super.initState();
+    _pageController = PageController(
+      initialPage: 0,
+    );
   }
 
   @override
@@ -36,7 +37,7 @@ class _OnBoardPageCoreState extends State<OnBoardPageCore> {
             onPageChanged: (index) {
               print(index);
             },
-            itemCount: onBoardPageList.length,
+            itemCount: 4,
             itemBuilder: (context, i) {
               return onBoardPageList[i];
             },
@@ -45,10 +46,22 @@ class _OnBoardPageCoreState extends State<OnBoardPageCore> {
       ),
     );
   }
-}
 
-List<OnBoardPage> onBoardPageList = [
-  OnBoardPage(titleMid: "nama 1", titleTop: "Nama 3"),
-  OnBoardPage(titleMid: "Nama 2", titleTop: "Nama 2"),
-  OnBoardPage(titleMid: "Nama 3", titleTop: "Nama 1"),
-];
+  List<OnBoardPage> onBoardPageList = [
+    OnBoardPage(
+      titleMid: "nama 1",
+      titleTop: "Nama 3",
+      warna: Colors.amber,
+    ),
+    OnBoardPage(
+      titleMid: "Nama 2",
+      titleTop: "Nama 2",
+      warna: Colors.yellow,
+    ),
+    OnBoardPage(
+      titleMid: "Nama 3",
+      titleTop: "Nama 1",
+      warna: Colors.blue,
+    ),
+  ];
+}

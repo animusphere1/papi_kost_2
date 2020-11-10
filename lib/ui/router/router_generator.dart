@@ -24,8 +24,6 @@ class RouterGenerator {
       case routeLogin:
         return MaterialPageRoute(builder: (_) => Login());
         break;
-      default:
-        return MaterialPageRoute(builder: (_) => SplashScreen());
     }
   }
 }
