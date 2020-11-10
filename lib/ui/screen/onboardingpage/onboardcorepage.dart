@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'controller.dart';
 import 'onboardpage.dart';
 
 class OnBoardPageCore extends StatefulWidget {
@@ -37,7 +36,7 @@ class _OnBoardPageCoreState extends State<OnBoardPageCore> {
             onPageChanged: (index) {
               print(index);
             },
-            itemCount: 4,
+            itemCount: onBoardPageList.length,
             itemBuilder: (context, i) {
               return onBoardPageList[i];
             },

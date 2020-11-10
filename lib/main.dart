@@ -29,8 +29,8 @@ class _MyAppState extends State<MyApp> {
       child: Consumer<ThemeProvider>(builder: (context, themeProvider, _) {
         return MaterialApp(
           debugShowCheckedModeBanner: true,
-          theme: themeProvider.thema,
-          initialRoute: RouterGenerator.routeOnboard,
+          theme: themeProvider.theme,
+          initialRoute: RouterGenerator.routeSplash,
           onGenerateRoute: RouterGenerator.generateRoute,
         );
       }),
