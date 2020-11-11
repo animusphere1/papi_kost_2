@@ -8,8 +8,6 @@ class RouterGenerator {
   static const String routeOnboard = "/onBoarding";
   static const String routeLogin = "/login";
 
-  static const nama = 'fajar';
-
   // ignore: missing_return
   static Route<dynamic> generateRoute(RouteSettings settings) {
     final args = settings.arguments;

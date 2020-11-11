@@ -22,7 +22,7 @@ class OnBoardPage extends StatelessWidget {
         color: warna,
         child: GestureDetector(
           onTap: () {
-            pageController.jumpToPage(0);
+          
           },
           child: Center(
             child: Container(
