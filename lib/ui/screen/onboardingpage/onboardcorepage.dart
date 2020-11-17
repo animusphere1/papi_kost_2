@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:papi_kost/ui/constant/constantimage.dart';
 import 'onboardpage.dart';
+import 'package:supercharged/supercharged.dart';
 
 class OnBoardPageCore extends StatefulWidget {
   @override
@@ -41,6 +43,12 @@ class _OnBoardPageCoreState extends State<OnBoardPageCore> {
               return onBoardPageList[i];
             },
           ),
+          Column(
+            children: [
+              _topLogo(),
+              _topLogo(),
+            ],
+          ),
         ],
       ),
     );
@@ -48,19 +56,31 @@ class _OnBoardPageCoreState extends State<OnBoardPageCore> {
 
   List<OnBoardPage> onBoardPageList = [
     OnBoardPage(
-      titleMid: "nama 1",
+      titleMid: "Let's Find A Better Place",
       titleTop: "Nama 3",
-      warna: Colors.amber,
     ),
     OnBoardPage(
       titleMid: "Nama 2",
       titleTop: "Nama 2",
-      warna: Colors.yellow,
     ),
     OnBoardPage(
       titleMid: "Nama 3",
       titleTop: "Nama 1",
-      warna: Colors.blue,
     ),
   ];
+
+  //Logo
+  Widget _topLogo() {
+    return Container(
+      margin: EdgeInsets.only(
+        top: MediaQuery.of(context).padding.top,
+        left: 10,
+      ),
+      child: Image.asset(
+        logothejourneywhite,
+        fit: BoxFit.fill,
+        width: MediaQuery.of(context).size.width * 0.4,
+      ),
+    );
+  }
 }

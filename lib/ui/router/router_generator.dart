@@ -13,15 +13,14 @@ class RouterGenerator {
     final args = settings.arguments;
 
     switch (settings.name) {
-      case routeSplash:
-        return MaterialPageRoute(builder: (_) => SplashScreen());
-        break;
       case routeOnboard:
         return MaterialPageRoute(builder: (_) => OnBoardPageCore());
         break;
       case routeLogin:
         return MaterialPageRoute(builder: (_) => Login());
         break;
+      default:
+        return MaterialPageRoute(builder: (_) => SplashScreen());
     }
   }
 }
