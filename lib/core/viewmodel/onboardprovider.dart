@@ -6,17 +6,6 @@ class OnBoardProvider extends ChangeNotifier {
 
   void changeDots(int index) {
     _indexdots = index;
-    // print(indexdots);
     notifyListeners();
   }
-
-  // void indexdotsgantiklik(PageController controller) {
-  //   if (_indexdots != onboardingscreenlist.length - 1) {
-  //     _indexdots++;
-  //     controller.animateToPage(_indexdots,
-  //         duration: Duration(seconds: 1), curve: Curves.fastOutSlowIn);
-  //   }
-  //   print(_indexdots);
-  //   notifyListeners();
-  // }
 }

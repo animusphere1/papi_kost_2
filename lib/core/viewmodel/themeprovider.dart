@@ -17,6 +17,7 @@ class ThemeProvider extends ChangeNotifier {
       backgroundColor: "#041C33".toColor(),
       accentColor: "#041C33".toColor(),
       cardColor: '#f6f7f9'.toColor(),
+      fontFamily: 'NunitoSans',
     );
     notifyListeners();
   }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:supercharged/supercharged.dart';
 
 class OnBoardPage extends StatelessWidget {
   final String titleTop;
