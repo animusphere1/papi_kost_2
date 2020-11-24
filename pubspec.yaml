@@ -58,7 +58,9 @@ flutter:
     - assets/TheJourneyBlack.png
     - assets/TheJourneyWhite.png
     - assets/house-onboard.svg
-    - assets/livingroomsplashscren.jpg
+    - assets/image/tothestart.png
+    - assets/image/homesweethome.png
+    - assets/image/booking.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -74,10 +76,10 @@ flutter:
   fonts:
     - family: NunitoSans
       fonts:
-        - asset: fonts/NunitoSans-Regular.ttf
-        - asset: fonts/NunitoSans-Bold.ttf
+        - asset: assets/fonts/NunitoSans-Regular.ttf
+        - asset: assets/fonts/NunitoSans-Bold.ttf
           weight: 700
-        - asset: fonts/NunitoSans-Light.ttf
+        - asset: assets/fonts/NunitoSans-Light.ttf
           weight: 300
   #
   # For details regarding fonts from package dependencies,
