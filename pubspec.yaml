@@ -59,8 +59,8 @@ flutter:
     - assets/TheJourneyWhite.png
     - assets/house-onboard.svg
     - assets/image/tothestart.png
-    - assets/image/homesweethome.png
-    - assets/image/booking.png
+    - assets/image/placetofind.png
+    - assets/image/starringfromwindow.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

@@ -3,18 +3,18 @@ import 'package:papi_kost/ui/screen/onboardingpage/onboardpage.dart';
 
 List<OnBoardPage> onBoardPageList = [
   OnBoardPage(
-    titleMid: "Home Sweet Home",
-    titleTop: "Home Sweet Home",
-    image: homesweethome,
+    titleMid: "Temukan Tempat Tinggal Impian Mu",
+    titleTop: "Find a Place",
+    image: placetofind,
   ),
   OnBoardPage(
-    titleMid: "Nama 2",
-    titleTop: "Booking",
-    image: booking,
+    titleMid: "Incar Tempat Impian Mu",
+    titleTop: "That's My Place",
+    image: starringfromwindow,
   ),
   OnBoardPage(
-    titleMid: "Nama 3",
-    titleTop: "Let's To The Start",
+    titleMid: "Ayo Mulai !",
+    titleTop: "Let's To The Start !",
     image: tothestart,
   ),
 ];

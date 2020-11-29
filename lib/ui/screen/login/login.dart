@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -8,17 +9,19 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Hero(
-            tag: "LogoText",
-            child: Image.asset(
-              'assets/TheJourneyBlack.png',
+    return Scaffold(
+      body: Container(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Hero(
+              tag: "LogoText",
+              child: Image.asset(
+                'assets/TheJourneyBlack.png',
+              ),
             ),
-          )
-        ],
+          ],
+        ),
       ),
     );
   }
