@@ -19,6 +19,7 @@ class _OnBoardPageCoreState extends State<OnBoardPageCore> {
     super.initState();
     _pageController = PageController(
       initialPage: 0,
+      viewportFraction: 1.0,
     );
   }
 
@@ -30,6 +31,7 @@ class _OnBoardPageCoreState extends State<OnBoardPageCore> {
 
   @override
   Widget build(BuildContext context) {
+    var onBoardProv = Provider.of<OnBoardProvider>(context, listen: false);
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       body: Stack(
@@ -37,8 +39,7 @@ class _OnBoardPageCoreState extends State<OnBoardPageCore> {
           PageView.builder(
             controller: _pageController,
             onPageChanged: (index) {
-              Provider.of<OnBoardProvider>(context, listen: false)
-                  .changeDots(index);
+              onBoardProv.changeDots(index);
               print("Page Controller Index : $index");
             },
             physics: BouncingScrollPhysics(),

@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:papi_kost/ui/screen/login/loginpage.dart';
+import 'package:papi_kost/ui/screen/login/signup.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -7,21 +9,27 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  PageController _pageController = PageController(initialPage: 0);
+
+  //
+  List<Widget> _listPage = [
+    LoginPage(),
+    SignUpPage(),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Hero(
-              tag: "LogoText",
-              child: Image.asset(
-                'assets/TheJourneyBlack.png',
-              ),
-            ),
-          ],
-        ),
+      resizeToAvoidBottomPadding: false,
+      backgroundColor: Theme.of(context).cardColor,
+      body: Stack(
+        children: [
+          PageView(
+            controller: _pageController,
+            physics: BouncingScrollPhysics(),
+            children: _listPage,
+          ),
+        ],
       ),
     );
   }

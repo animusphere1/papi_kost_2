@@ -13,56 +13,51 @@ class OnBoardPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      child: Center(
-        child: Column(
-          children: [
-            Container(
-              height: MediaQuery.of(context).size.height * 0.2,
+      child: Column(
+        children: [
+          Container(
+            height: MediaQuery.of(context).size.height * 0.2,
+          ),
+          Container(
+            height: MediaQuery.of(context).size.height * 0.4,
+            child: Image.asset(
+              image,
             ),
-            Visibility(
-              visible: false,
-              child: Container(
-                height: MediaQuery.of(context).size.height * 0.4,
-                child: Image.asset(
-                  image,
+          ),
+          Container(
+            height: MediaQuery.of(context).size.height * 0.4,
+            width: MediaQuery.of(context).size.width,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  titleTop,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                    color: Theme.of(context).buttonColor,
+                  ),
                 ),
-              ),
-            ),
-            Container(
-              height: MediaQuery.of(context).size.height * 0.4,
-              width: MediaQuery.of(context).size.width,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Text(
-                    titleTop,
+                Container(
+                  margin: EdgeInsets.only(left: 10, right: 10),
+                  child: dividerTranstparant,
+                ),
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.7,
+                  child: Text(
+                    titleMid,
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
-                      color: Theme.of(context).buttonColor,
+                      color: Theme.of(context).accentColor,
                     ),
                   ),
-                  Container(
-                    margin: EdgeInsets.only(left: 10, right: 10),
-                    child: dividerTranstparant,
-                  ),
-                  Container(
-                    width: MediaQuery.of(context).size.width * 0.7,
-                    child: Text(
-                      titleMid,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        color: Theme.of(context).accentColor,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

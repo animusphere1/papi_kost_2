@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:papi_kost/ui/router/router_generator.dart';
 import 'package:supercharged/supercharged.dart';
 
 class ThemeProvider extends ChangeNotifier {
@@ -27,22 +26,6 @@ class ThemeProvider extends ChangeNotifier {
       buttonColor: "#ff6600".toColor(),
       fontFamily: 'NunitoSans',
     );
-    notifyListeners();
-  }
-
-  void changeTheme(BuildContext context) async {
-    int hasil = 0;
-    if (hasil != null) {
-      switch (hasil) {
-        case 0:
-          Navigator.pushNamed(context, RouterGenerator.routeLogin);
-          break;
-        case 1:
-          print("angka $hasil");
-          break;
-        default:
-      }
-    }
     notifyListeners();
   }
 }
