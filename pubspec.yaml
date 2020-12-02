@@ -27,6 +27,7 @@ dependencies:
   supercharged: ^1.10.0
   flutter_launcher_icons: ^0.8.1
   dots_indicator: ^1.2.0
+  font_awesome_flutter: ^8.10.0
   
 
 flutter_icons:

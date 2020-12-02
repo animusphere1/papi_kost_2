@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:papi_kost/ui/screen/login/loginpage.dart';
-import 'package:papi_kost/ui/screen/login/signup.dart';
+import 'loginpage.dart';
+import 'signup.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -9,25 +9,31 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  PageController _pageController = PageController(initialPage: 0);
+  PageController _pageController =
+      PageController(initialPage: 0, viewportFraction: 1.0);
 
-  //
-  List<Widget> _listPage = [
-    LoginPage(),
-    SignUpPage(),
-  ];
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomPadding: false,
+      resizeToAvoidBottomPadding: true,
       backgroundColor: Theme.of(context).cardColor,
       body: Stack(
         children: [
           PageView(
             controller: _pageController,
             physics: BouncingScrollPhysics(),
-            children: _listPage,
+            children: [
+              LoginPage(
+                pageController: _pageController,
+              ),
+              SignUpPage(),
+            ],
           ),
         ],
       ),
