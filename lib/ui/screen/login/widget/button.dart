@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 
 class Button extends StatelessWidget {
-  final Function function;
-  final String titleButton;
+  Function function;
+  String titleButton;
+  Color colorButtonBackground;
+  Color colorTitleButton;
 
-  const Button({
-    Key key,
+  Button({
     this.function,
+    this.colorButtonBackground,
     this.titleButton,
-  }) : super(key: key);
+    this.colorTitleButton,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,38 +19,40 @@ class Button extends StatelessWidget {
       onTap: () {
         print(titleButton);
       },
-      child: Container(
-        height: MediaQuery.of(context).size.height * 0.08,
-        margin: EdgeInsets.symmetric(
-          vertical: 10,
-        ),
-        decoration: BoxDecoration(
-          color: Theme.of(context).accentColor,
-          border: Border.all(
-            color: Theme.of(context).accentColor,
+      child: SingleChildScrollView(
+        child: Container(
+          height: MediaQuery.of(context).size.height * 0.08,
+          margin: EdgeInsets.symmetric(
+            vertical: 10,
           ),
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey,
-              spreadRadius: 0,
-              blurRadius: 5,
-              offset: Offset(0, 7),
+          decoration: BoxDecoration(
+            color: colorButtonBackground,
+            border: Border.all(
+              color: Theme.of(context).accentColor,
             ),
-          ],
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              titleButton,
-              style: TextStyle(
-                color: Theme.of(context).backgroundColor,
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
+            borderRadius: BorderRadius.circular(10),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey,
+                spreadRadius: 0,
+                blurRadius: 5,
+                offset: Offset(0, 7),
               ),
-            ),
-          ],
+            ],
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                titleButton,
+                style: TextStyle(
+                  color: colorTitleButton,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

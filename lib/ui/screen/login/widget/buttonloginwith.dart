@@ -12,9 +12,9 @@ class ButtonLoginWith extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.08,
+      height: MediaQuery.of(context).size.height * 0.07,
       margin: const EdgeInsets.symmetric(
-        vertical: 10,
+        vertical: 5,
       ),
       decoration: BoxDecoration(
         color: color,

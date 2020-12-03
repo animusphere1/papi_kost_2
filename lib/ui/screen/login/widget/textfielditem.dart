@@ -25,7 +25,7 @@ class _TextFieldItemState extends State<TextFieldItem> {
     return Container(
       height: MediaQuery.of(context).size.height * 0.08,
       margin: EdgeInsets.symmetric(
-        vertical: 10,
+        vertical: 5,
       ),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -59,7 +59,10 @@ class _TextFieldItemState extends State<TextFieldItem> {
                     onTap: () {
                       changeObscureText();
                     },
-                    child: Icon(widget.icon),
+                    child: Icon(
+                      widget.icon,
+                      color: Colors.black38.withOpacity(0.5),
+                    ),
                   )
                 : SizedBox(),
           ],
