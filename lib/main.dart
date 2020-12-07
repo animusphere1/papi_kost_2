@@ -31,7 +31,7 @@ class _MyAppState extends State<MyApp> {
         return MaterialApp(
           debugShowCheckedModeBanner: true,
           theme: themeProvider.theme,
-          initialRoute: RouterGenerator.routeLogin,
+          initialRoute: RouterGenerator.routeHome,
           onGenerateRoute: RouterGenerator.generateRoute,
         );
       }),

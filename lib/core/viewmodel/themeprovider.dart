@@ -22,6 +22,7 @@ class ThemeProvider extends ChangeNotifier {
     _themeData = ThemeData(
       backgroundColor: "#FFFFFF".toColor(),
       accentColor: "#041C33".toColor(),
+      accentColorBrightness: Brightness.light,
       cardColor: '#f6f7f9'.toColor(),
       buttonColor: "#ff6600".toColor(),
       fontFamily: 'NunitoSans',

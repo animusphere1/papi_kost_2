@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:papi_kost/ui/screen/home/home.dart';
 import 'package:papi_kost/ui/screen/login/login.dart';
 import 'package:papi_kost/ui/screen/onboardingpage/onboardcorepage.dart';
 import 'package:papi_kost/ui/screen/splashscreen/splashscreen.dart';
@@ -7,6 +8,7 @@ class RouterGenerator {
   static const String routeSplash = "/spalshscreen";
   static const String routeOnboard = "/onBoarding";
   static const String routeLogin = "/login";
+  static const String routeHome = "/home";
 
   // ignore: missing_return
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -21,6 +23,9 @@ class RouterGenerator {
         break;
       case routeSplash:
         return MaterialPageRoute(builder: (_) => SplashScreen());
+        break;
+      case routeHome:
+        return MaterialPageRoute(builder: (_) => HomePage());
         break;
     }
   }

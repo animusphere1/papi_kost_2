@@ -4,11 +4,13 @@ class TextFieldItem extends StatefulWidget {
   IconData icon;
   String hintText;
   bool statusObscure;
+  bool readOnly;
 
   TextFieldItem({
     this.icon,
-    this.hintText,
+    @required this.hintText,
     this.statusObscure = false,
+    this.readOnly = false,
   });
 
   @override
@@ -16,12 +18,18 @@ class TextFieldItem extends StatefulWidget {
 }
 
 class _TextFieldItemState extends State<TextFieldItem> {
-  TextEditingController _textEditingController =
-      TextEditingController(text: '');
+  TextEditingController _textEditingController = TextEditingController();
+
+  @override
+  initState() {
+    _textEditingController.text = '';
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     final node = FocusScope.of(context);
+
     return Container(
       height: MediaQuery.of(context).size.height * 0.08,
       margin: EdgeInsets.symmetric(
@@ -33,11 +41,12 @@ class _TextFieldItemState extends State<TextFieldItem> {
         borderRadius: BorderRadius.circular(10),
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 2),
         child: Row(
           children: <Widget>[
             Expanded(
               child: TextField(
+                textAlignVertical: TextAlignVertical.center,
                 controller: _textEditingController,
                 onChanged: (value) {},
                 onEditingComplete: () => node.nextFocus(),

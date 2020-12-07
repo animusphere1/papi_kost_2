@@ -21,8 +21,8 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomPadding: true,
-      backgroundColor: Theme.of(context).cardColor,
+      // resizeToAvoidBottomInset: true,
+      backgroundColor: Theme.of(context).backgroundColor,
       body: Stack(
         children: [
           PageView(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:papi_kost/ui/router/router_generator.dart';
 
 class Button extends StatelessWidget {
   Function function;
@@ -16,9 +17,7 @@ class Button extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        print(titleButton);
-      },
+      onTap: () {},
       child: SingleChildScrollView(
         child: Container(
           height: MediaQuery.of(context).size.height * 0.08,
@@ -30,7 +29,7 @@ class Button extends StatelessWidget {
             border: Border.all(
               color: Theme.of(context).accentColor,
             ),
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(15),
             boxShadow: [
               BoxShadow(
                 color: Colors.grey,

@@ -21,15 +21,15 @@ class _LoginPageState extends State<LoginPage> {
         horizontal: 20,
         vertical: 10,
       ),
-      color: Theme.of(context).cardColor,
+      color: Theme.of(context).backgroundColor,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           headerLogin(context),
           dividerTranstparant,
           bodyLogin(context),
-          dividerTranstparant,
           textForgotPassword(context),
+          dividerTranstparant,
           goToSignUp(context),
         ],
       ),
@@ -51,27 +51,29 @@ class _LoginPageState extends State<LoginPage> {
 
   //body
   Widget bodyLogin(BuildContext context) {
-    return Column(
-      children: [
-        widgetLoginWith(),
-        TextFieldItem(
-          icon: null,
-          hintText: "Email",
-          statusObscure: false,
-        ),
-        TextFieldItem(
-          icon: Icons.remove_red_eye,
-          hintText: "Password",
-          statusObscure: true,
-        ),
-        Container(
-          child: Button(
-            titleButton: 'Log in',
-            colorButtonBackground: Theme.of(context).accentColor,
-            colorTitleButton: Theme.of(context).backgroundColor,
+    return Container(
+      child: Column(
+        children: [
+          widgetLoginWith(),
+          TextFieldItem(
+            icon: null,
+            hintText: "Email",
+            statusObscure: false,
           ),
-        ),
-      ],
+          TextFieldItem(
+            icon: Icons.remove_red_eye,
+            hintText: "Password",
+            statusObscure: true,
+          ),
+          Container(
+            child: Button(
+              titleButton: 'Log in',
+              colorButtonBackground: Theme.of(context).accentColor,
+              colorTitleButton: Theme.of(context).backgroundColor,
+            ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -117,8 +119,7 @@ class _LoginPageState extends State<LoginPage> {
         margin: EdgeInsets.symmetric(vertical: 10),
         child: GestureDetector(
           onTap: () {
-            widget.pageController.animateToPage(1,
-                duration: Duration(seconds: 1), curve: Curves.easeIn);
+            widget.pageController.jumpToPage(1);
           },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,

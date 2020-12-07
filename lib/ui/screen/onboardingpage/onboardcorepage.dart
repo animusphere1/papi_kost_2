@@ -12,15 +12,14 @@ class OnBoardPageCore extends StatefulWidget {
 }
 
 class _OnBoardPageCoreState extends State<OnBoardPageCore> {
-  PageController _pageController = PageController();
+  PageController _pageController = PageController(
+    initialPage: 0,
+    viewportFraction: 1.0,
+  );
 
   @override
   void initState() {
     super.initState();
-    _pageController = PageController(
-      initialPage: 0,
-      viewportFraction: 1.0,
-    );
   }
 
   @override

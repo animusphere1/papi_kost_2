@@ -135,7 +135,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
               ),
               Text(
-                "Login".trim(),
+                "Login",
                 style: TextStyle(
                   color: Theme.of(context).buttonColor,
                   fontWeight: FontWeight.bold,
