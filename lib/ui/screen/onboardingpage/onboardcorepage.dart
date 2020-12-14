@@ -1,10 +1,12 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:papi_kost/core/viewmodel/onboardprovider.dart';
-import 'package:papi_kost/ui/constant/constantlist.dart';
+import 'package:papi_kost/ui/constant/constantimage.dart';
 import 'package:papi_kost/ui/router/router_generator.dart';
 import 'package:supercharged/supercharged.dart';
 import 'package:provider/provider.dart';
+
+import 'onboardpage.dart';
 
 class OnBoardPageCore extends StatefulWidget {
   @override
@@ -31,6 +33,7 @@ class _OnBoardPageCoreState extends State<OnBoardPageCore> {
   @override
   Widget build(BuildContext context) {
     var onBoardProv = Provider.of<OnBoardProvider>(context, listen: false);
+
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       body: Stack(
@@ -40,6 +43,7 @@ class _OnBoardPageCoreState extends State<OnBoardPageCore> {
             onPageChanged: (index) {
               onBoardProv.changeDots(index);
               print("Page Controller Index : $index");
+              print(_pageController.page);
             },
             physics: BouncingScrollPhysics(),
             itemCount: onBoardPageList.length,
@@ -171,4 +175,23 @@ class _OnBoardPageCoreState extends State<OnBoardPageCore> {
       },
     );
   }
+
+  //List PageView
+  List<OnBoardPage> onBoardPageList = [
+    OnBoardPage(
+      titleMid: "Temukan Tempat Tinggal Impian Mu",
+      titleTop: "Find a Place",
+      image: placetofind,
+    ),
+    OnBoardPage(
+      titleMid: "Incar Tempat Impian Mu",
+      titleTop: "That's My Place",
+      image: starringfromwindow,
+    ),
+    OnBoardPage(
+      titleMid: "Ayo Mulai !",
+      titleTop: "Let's To The Start !",
+      image: tothestart,
+    ),
+  ];
 }

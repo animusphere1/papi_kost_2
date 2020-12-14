@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'loginpage.dart';
-import 'signup.dart';
+import 'screen/loginpage.dart';
+import 'screen/signup.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -21,8 +21,8 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // resizeToAvoidBottomInset: true,
       backgroundColor: Theme.of(context).backgroundColor,
+      resizeToAvoidBottomPadding: false,
       body: Stack(
         children: [
           PageView(

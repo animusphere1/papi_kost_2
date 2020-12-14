@@ -1,23 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:papi_kost/ui/router/router_generator.dart';
 
 class Button extends StatelessWidget {
   Function function;
   String titleButton;
   Color colorButtonBackground;
   Color colorTitleButton;
+  IconData icon;
 
   Button({
     this.function,
     this.colorButtonBackground,
     this.titleButton,
     this.colorTitleButton,
+    this.icon,
   });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        function != null ? function() : print('kosong');
+      },
       child: SingleChildScrollView(
         child: Container(
           height: MediaQuery.of(context).size.height * 0.08,
@@ -26,22 +29,21 @@ class Button extends StatelessWidget {
           ),
           decoration: BoxDecoration(
             color: colorButtonBackground,
-            border: Border.all(
-              color: Theme.of(context).accentColor,
-            ),
-            borderRadius: BorderRadius.circular(15),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey,
-                spreadRadius: 0,
-                blurRadius: 5,
-                offset: Offset(0, 7),
-              ),
-            ],
+            borderRadius: BorderRadius.circular(10),
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              //check icon null or not
+              (icon != null)
+                  ? Icon(
+                      icon,
+                      color: Theme.of(context).backgroundColor,
+                    )
+                  : SizedBox(),
+              SizedBox(
+                width: 4,
+              ),
               Text(
                 titleButton,
                 style: TextStyle(

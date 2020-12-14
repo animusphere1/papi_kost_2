@@ -18,7 +18,7 @@ class ButtonLoginWith extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         color: color,
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.1),

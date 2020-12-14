@@ -7,4 +7,9 @@ class SignUpProvider extends ChangeNotifier {
 
   bool _statusAggrement2 = false;
   bool get statusAggrement2 => _statusAggrement2;
+
+  void changeStatus({bool status}) {
+    _statusAggrement1 = status;
+    notifyListeners();
+  }
 }

@@ -18,29 +18,19 @@ class _SignUpPageState extends State<SignUpPage> {
       onPanDown: (_) {
         FocusScope.of(context).requestFocus(FocusNode());
       },
-      child: Container(
-        margin: EdgeInsets.symmetric(
-          horizontal: 20,
-          vertical: 10,
-        ),
-        child: Column(
-          children: [
-            headerLogin(context),
-            bodySignUp(context),
-            goToLogin(context),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget headerLogin(BuildContext context) {
-    return Expanded(
-      child: Container(
-        margin: EdgeInsets.symmetric(vertical: 10),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [],
+      child: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
+        child: Container(
+          margin: EdgeInsets.symmetric(
+            horizontal: 20,
+            vertical: 30,
+          ),
+          child: Column(
+            children: [
+              bodySignUp(context),
+              goToLogin(context),
+            ],
+          ),
         ),
       ),
     );
@@ -65,6 +55,11 @@ class _SignUpPageState extends State<SignUpPage> {
           hintText: "Password",
           statusObscure: true,
         ),
+        TextFieldItem(
+          icon: Icons.remove_red_eye,
+          hintText: "Password",
+          statusObscure: true,
+        ),
         buttonUiProv(),
       ],
     );
@@ -76,9 +71,10 @@ class _SignUpPageState extends State<SignUpPage> {
         if (signUpProv.statusAggrement1 == false &&
             signUpProv.statusAggrement2 == false) {
           return Button(
-            colorButtonBackground: Colors.yellow,
+            colorButtonBackground: Colors.grey.withOpacity(0.3),
             titleButton: "Sign Up",
             colorTitleButton: Theme.of(context).backgroundColor,
+            icon: Icons.person,
           );
         }
 
@@ -86,6 +82,7 @@ class _SignUpPageState extends State<SignUpPage> {
           colorButtonBackground: Theme.of(context).accentColor,
           titleButton: "Sign Up",
           colorTitleButton: Theme.of(context).backgroundColor,
+          icon: Icons.person,
         );
       },
     );
@@ -118,11 +115,12 @@ class _SignUpPageState extends State<SignUpPage> {
   }
 
   Widget goToLogin(BuildContext context) {
-    return Expanded(
-      child: Container(
-        margin: EdgeInsets.symmetric(vertical: 10),
-        child: GestureDetector(
-          onTap: () {},
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 10),
+      child: GestureDetector(
+        onTap: () {},
+        child: Align(
+          alignment: Alignment.bottomCenter,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.end,
