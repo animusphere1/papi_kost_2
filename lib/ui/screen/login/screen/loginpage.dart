@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:papi_kost/core/viewmodel/signupprovider.dart';
 import 'package:papi_kost/ui/screen/login/widget/widget.dart';
+import 'package:provider/provider.dart';
 import 'package:supercharged/supercharged.dart';
 
 class LoginPage extends StatefulWidget {
@@ -15,17 +17,23 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(
-        horizontal: 20,
-        vertical: 30,
-      ),
-      color: Theme.of(context).backgroundColor,
-      child: Column(
-        children: [
-          bodyLogin(context),
-          goToSignUp(context),
-        ],
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onPanDown: (_) {
+        FocusScope.of(context).requestFocus(FocusNode());
+      },
+      child: Container(
+        margin: EdgeInsets.symmetric(
+          horizontal: 20,
+          vertical: 30,
+        ),
+        color: Theme.of(context).backgroundColor,
+        child: Column(
+          children: [
+            bodyLogin(context),
+            goToSignUp(context),
+          ],
+        ),
       ),
     );
   }
@@ -74,13 +82,17 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Widget textForgotPassword(BuildContext context) {
-    return Text(
-      "Forgot Password ?",
-      style: TextStyle(
-        color: Theme.of(context).accentColor,
-        fontWeight: FontWeight.bold,
-      ),
-    );
+    return FutureBuilder(
+        future: Provider.of<SignUpProvider>(context).updateDateTime(),
+        builder: (context, _) {
+          return Text(
+            Provider.of<SignUpProvider>(context).dateTime.toString(),
+            style: TextStyle(
+              color: Theme.of(context).accentColor,
+              fontWeight: FontWeight.bold,
+            ),
+          );
+        });
   }
 
   Widget widgetLoginWith() {

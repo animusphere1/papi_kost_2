@@ -23,6 +23,7 @@ class _TextFieldItemState extends State<TextFieldItem> {
   @override
   initState() {
     _textEditingController.text = '';
+
     super.initState();
   }
 
@@ -48,7 +49,10 @@ class _TextFieldItemState extends State<TextFieldItem> {
               child: TextField(
                 textAlignVertical: TextAlignVertical.center,
                 controller: _textEditingController,
-                onChanged: (value) {},
+                keyboardType: TextInputType.number,
+                onChanged: (value) {
+                  var hasil = value.replaceFirst(new RegExp(r'^0+'), '');
+                },
                 onEditingComplete: () => node.nextFocus(),
                 obscureText: widget.statusObscure,
                 style: TextStyle(
