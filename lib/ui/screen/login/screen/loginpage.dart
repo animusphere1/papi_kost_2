@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:papi_kost/core/viewmodel/signupprovider.dart';
 import 'package:papi_kost/ui/screen/login/widget/widget.dart';
-import 'package:provider/provider.dart';
 import 'package:supercharged/supercharged.dart';
+import 'package:papi_kost/ui/constant/enum.dart';
 
 class LoginPage extends StatefulWidget {
   PageController pageController;
@@ -60,13 +59,15 @@ class _LoginPageState extends State<LoginPage> {
           widgetLoginWith(),
           TextFieldItem(
             icon: null,
-            hintText: "Email",
-            statusObscure: false,
+            hintText: "Email or Username",
+            focus: TextFocus.focus,
           ),
           TextFieldItem(
             icon: Icons.remove_red_eye,
             hintText: "Password",
             statusObscure: true,
+            inputType: TextInputType.number,
+            focus: TextFocus.unFocus,
           ),
           Container(
             child: Button(
@@ -81,18 +82,28 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
+  // Widget textForgotPassword(BuildContext context) {
+  //   return FutureBuilder(
+  //       future: Provider.of<SignUpProvider>(context).updateDateTime(),
+  //       builder: (context, _) {
+  //         return Text(
+  //           Provider.of<SignUpProvider>(context).dateTime.toString(),
+  //           style: TextStyle(
+  //             color: Theme.of(context).accentColor,
+  //             fontWeight: FontWeight.bold,
+  //           ),
+  //         );
+  //       });
+  // }
+
   Widget textForgotPassword(BuildContext context) {
-    return FutureBuilder(
-        future: Provider.of<SignUpProvider>(context).updateDateTime(),
-        builder: (context, _) {
-          return Text(
-            Provider.of<SignUpProvider>(context).dateTime.toString(),
-            style: TextStyle(
-              color: Theme.of(context).accentColor,
-              fontWeight: FontWeight.bold,
-            ),
-          );
-        });
+    return Text(
+      'Forgot Password',
+      style: TextStyle(
+        color: Theme.of(context).accentColor,
+        fontWeight: FontWeight.bold,
+      ),
+    );
   }
 
   Widget widgetLoginWith() {
@@ -131,20 +142,20 @@ class _LoginPageState extends State<LoginPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              // Text(
-              //   "Dont have a account ? ",
-              //   style: TextStyle(
-              //     color: Theme.of(context).accentColor,
-              //     fontWeight: FontWeight.bold,
-              //   ),
-              // ),
-              // Text(
-              //   "Let's Join Us ",
-              //   style: TextStyle(
-              //     color: Theme.of(context).buttonColor,
-              //     fontWeight: FontWeight.bold,
-              //   ),
-              // ),
+              Text(
+                "Dont have a account ? ",
+                style: TextStyle(
+                  color: Theme.of(context).accentColor,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Text(
+                "Let's Join Us ",
+                style: TextStyle(
+                  color: Theme.of(context).buttonColor,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ],
           ),
         ),

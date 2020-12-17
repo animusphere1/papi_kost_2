@@ -1,16 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:papi_kost/ui/constant/enum.dart';
 
 class TextFieldItem extends StatefulWidget {
   IconData icon;
   String hintText;
   bool statusObscure;
   bool readOnly;
+  TextInputType inputType;
+  TextType textType;
+  Function(dynamic) onChange;
+  TextFocus focus;
 
   TextFieldItem({
     this.icon,
     @required this.hintText,
     this.statusObscure = false,
     this.readOnly = false,
+    this.inputType = TextInputType.text,
+    this.textType = TextType.phoneNumber,
+    this.onChange,
+    this.focus = TextFocus.unFocus,
   });
 
   @override
@@ -29,8 +39,6 @@ class _TextFieldItemState extends State<TextFieldItem> {
 
   @override
   Widget build(BuildContext context) {
-    final node = FocusScope.of(context);
-
     return Container(
       height: MediaQuery.of(context).size.height * 0.08,
       margin: EdgeInsets.symmetric(
@@ -49,11 +57,16 @@ class _TextFieldItemState extends State<TextFieldItem> {
               child: TextField(
                 textAlignVertical: TextAlignVertical.center,
                 controller: _textEditingController,
-                keyboardType: TextInputType.number,
+                keyboardType: widget.inputType,
+                inputFormatters: [
+                  textType(),
+                ],
                 onChanged: (value) {
-                  var hasil = value.replaceFirst(new RegExp(r'^0+'), '');
+                  widget.onChange != null
+                      ? widget.onChange(value)
+                      : DoNothingAction();
                 },
-                onEditingComplete: () => node.nextFocus(),
+                onEditingComplete: () => focusScope(context),
                 obscureText: widget.statusObscure,
                 style: TextStyle(
                     fontSize: 15,
@@ -94,5 +107,29 @@ class _TextFieldItemState extends State<TextFieldItem> {
     }
 
     setState(() {});
+  }
+
+  FilteringTextInputFormatter textType() {
+    switch (widget.textType) {
+      case TextType.phoneNumber:
+        return FilteringTextInputFormatter.deny(RegExp(r'^0+'),
+            replacementString: '');
+        break;
+      default:
+        return FilteringTextInputFormatter.allow(RegExp(r"[a-zA-Z]"),
+            replacementString: '');
+    }
+  }
+
+  dynamic focusScope(BuildContext context) {
+    switch (widget.focus) {
+      case TextFocus.focus:
+        return FocusScope.of(context).nextFocus();
+        break;
+      case TextFocus.unFocus:
+        return FocusScope.of(context).unfocus();
+        break;
+      default:
+    }
   }
 }

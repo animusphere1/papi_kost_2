@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/cupertino.dart';
 
 class SignUpProvider extends ChangeNotifier {
@@ -13,15 +11,8 @@ class SignUpProvider extends ChangeNotifier {
   DateTime _dateTime;
   DateTime get dateTime => _dateTime;
 
-  void changeStatus({bool status}) {
-    _statusAggrement1 = status;
+  void changeStatus(String value) {
+    print(value);
     notifyListeners();
-  }
-
-  Future<void> updateDateTime() async {
-    Timer.periodic(Duration(seconds: 5), (timer) {
-      _dateTime = DateTime.now();
-      notifyListeners();
-    });
   }
 }

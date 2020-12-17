@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:papi_kost/core/viewmodel/signupprovider.dart';
+import 'package:papi_kost/ui/constant/enum.dart';
 import 'package:papi_kost/ui/screen/login/widget/widget.dart';
 import 'package:provider/provider.dart';
 import 'package:supercharged/supercharged.dart';
@@ -13,24 +14,18 @@ class SignUpPage extends StatefulWidget {
 class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      behavior: HitTestBehavior.opaque,
-      onPanDown: (_) {
-        FocusScope.of(context).requestFocus(FocusNode());
-      },
-      child: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
-        child: Container(
-          margin: EdgeInsets.symmetric(
-            horizontal: 20,
-            vertical: 30,
-          ),
-          child: Column(
-            children: [
-              bodySignUp(context),
-              goToLogin(context),
-            ],
-          ),
+    return SingleChildScrollView(
+      physics: BouncingScrollPhysics(),
+      child: Container(
+        margin: EdgeInsets.symmetric(
+          horizontal: 20,
+          vertical: 30,
+        ),
+        child: Column(
+          children: [
+            bodySignUp(context),
+            goToLogin(context),
+          ],
         ),
       ),
     );
@@ -44,21 +39,27 @@ class _SignUpPageState extends State<SignUpPage> {
           icon: null,
           hintText: "Name",
           statusObscure: false,
+          onChange: (_) => Provider.of<SignUpProvider>(context, listen: false)
+              .changeStatus(_),
+          focus: TextFocus.focus,
         ),
         TextFieldItem(
           icon: null,
           hintText: "Email",
           statusObscure: false,
+          focus: TextFocus.focus,
         ),
         TextFieldItem(
           icon: Icons.remove_red_eye,
           hintText: "Password",
           statusObscure: true,
+          focus: TextFocus.focus,
         ),
         TextFieldItem(
           icon: Icons.remove_red_eye,
           hintText: "Password",
           statusObscure: true,
+          focus: TextFocus.unFocus,
         ),
         buttonUiProv(),
       ],
