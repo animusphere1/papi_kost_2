@@ -1,4 +1,7 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:papi_kost/ui/constant/constantwidget.dart';
+import 'package:papi_kost/ui/screen/home/widget/widget.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -15,8 +18,31 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           children: [
             appBarHome(context),
+            dividerTranstparant,
+            kostWidget(),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget kostWidget() {
+    return Container(
+      height: MediaQuery.of(context).size.height * 0.2,
+      width: MediaQuery.of(context).size.width,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: 5,
+        physics: BouncingScrollPhysics(),
+        itemBuilder: (context, i) {
+          print(i);
+          if (i == 4) {
+            return KostItem(
+              nama: 'fajar',
+            );
+          }
+          return KostItem();
+        },
       ),
     );
   }
@@ -59,14 +85,40 @@ class _HomePageState extends State<HomePage> {
                 SizedBox(
                   width: 10,
                 ),
-                circleButton(
-                  icon: Icons.bubble_chart,
-                  color: Theme.of(context).buttonColor,
-                ),
+                profilePicture(),
               ],
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget profilePicture() {
+    return ClipOval(
+      child: Image.network(
+        'https://uploads.disquscdn.com/images/dc368ebd907dfb3c40406ed0c842b10023f20651969cbd4bf77e524b3bf29ce7.jp',
+        width: 40,
+        height: 40,
+        fit: BoxFit.cover,
+        errorBuilder: (context, exception, stackTrace) {
+          return Text('Your error widget...');
+        },
+        loadingBuilder: (context, child, loadingProgress) {
+          print(loadingProgress);
+          if (loadingProgress == null) {
+            return child;
+          }
+          return ClipOval(
+            child: Container(
+              height: 40,
+              width: 40,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+              ),
+            ),
+          );
+        },
       ),
     );
   }
