@@ -5,7 +5,6 @@ import 'package:papi_kost/ui/constant/constantimage.dart';
 import 'package:papi_kost/ui/router/router_generator.dart';
 import 'package:supercharged/supercharged.dart';
 import 'package:provider/provider.dart';
-
 import 'onboardpage.dart';
 
 class OnBoardPageCore extends StatefulWidget {
@@ -43,7 +42,6 @@ class _OnBoardPageCoreState extends State<OnBoardPageCore> {
             onPageChanged: (index) {
               onBoardProv.changeDots(index);
               print("Page Controller Index : $index");
-              print(_pageController.page);
             },
             physics: BouncingScrollPhysics(),
             itemCount: onBoardPageList.length,

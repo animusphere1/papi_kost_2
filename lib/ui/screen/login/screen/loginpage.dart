@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:papi_kost/ui/router/router_generator.dart';
 import 'package:papi_kost/ui/screen/login/widget/widget.dart';
 import 'package:supercharged/supercharged.dart';
 import 'package:papi_kost/ui/constant/enum.dart';
@@ -74,12 +75,17 @@ class _LoginPageState extends State<LoginPage> {
               titleButton: 'Log in',
               colorButtonBackground: Theme.of(context).accentColor,
               colorTitleButton: Theme.of(context).backgroundColor,
+              // function: (context) => pindah(context),
             ),
           ),
           textForgotPassword(context),
         ],
       ),
     );
+  }
+
+  pindah(BuildContext context) {
+    Navigator.pushNamed(context, RouterGenerator.routeHome);
   }
 
   // Widget textForgotPassword(BuildContext context) {

@@ -19,7 +19,7 @@ class Button extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        function != null ? function() : print('kosong');
+        function != null ? function(context) : print('kosong');
       },
       child: SingleChildScrollView(
         child: Container(
