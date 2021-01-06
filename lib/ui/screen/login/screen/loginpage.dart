@@ -18,9 +18,8 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      behavior: HitTestBehavior.opaque,
       onPanDown: (_) {
-        FocusScope.of(context).requestFocus(FocusNode());
+        FocusScope.of(context).unfocus();
       },
       child: Container(
         margin: EdgeInsets.symmetric(
@@ -62,6 +61,7 @@ class _LoginPageState extends State<LoginPage> {
             icon: null,
             hintText: "Email or Username",
             focus: TextFocus.focus,
+            onChange: (value) => null,
           ),
           TextFieldItem(
             icon: Icons.remove_red_eye,
@@ -75,7 +75,7 @@ class _LoginPageState extends State<LoginPage> {
               titleButton: 'Log in',
               colorButtonBackground: Theme.of(context).accentColor,
               colorTitleButton: Theme.of(context).backgroundColor,
-              // function: (context) => pindah(context),
+              function: (context) => pindah(context),
             ),
           ),
           textForgotPassword(context),
@@ -85,22 +85,8 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   pindah(BuildContext context) {
-    Navigator.pushNamed(context, RouterGenerator.routeHome);
+    Navigator.pushNamed(context, RouterGenerator.routeHome, arguments: 'fajar');
   }
-
-  // Widget textForgotPassword(BuildContext context) {
-  //   return FutureBuilder(
-  //       future: Provider.of<SignUpProvider>(context).updateDateTime(),
-  //       builder: (context, _) {
-  //         return Text(
-  //           Provider.of<SignUpProvider>(context).dateTime.toString(),
-  //           style: TextStyle(
-  //             color: Theme.of(context).accentColor,
-  //             fontWeight: FontWeight.bold,
-  //           ),
-  //         );
-  //       });
-  // }
 
   Widget textForgotPassword(BuildContext context) {
     return Text(

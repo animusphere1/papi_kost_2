@@ -8,11 +8,12 @@ class SignUpProvider extends ChangeNotifier {
   bool _statusAggrement2 = false;
   bool get statusAggrement2 => _statusAggrement2;
 
-  DateTime _dateTime;
-  DateTime get dateTime => _dateTime;
+  String _nameSignUp = '';
+  String get nameSignUp => _nameSignUp;
 
-  void changeStatus(String value) {
-    print(value);
+  void changeNameSignUpTextField(String value) {
+    print('name sign up : $nameSignUp');
+    _nameSignUp = value;
     notifyListeners();
   }
 }

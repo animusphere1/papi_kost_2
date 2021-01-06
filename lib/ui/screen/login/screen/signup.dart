@@ -14,18 +14,23 @@ class SignUpPage extends StatefulWidget {
 class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      physics: BouncingScrollPhysics(),
-      child: Container(
-        margin: EdgeInsets.symmetric(
-          horizontal: 20,
-          vertical: 30,
-        ),
-        child: Column(
-          children: [
-            bodySignUp(context),
-            goToLogin(context),
-          ],
+    return GestureDetector(
+      onPanDown: (_) {
+        FocusScope.of(context).unfocus();
+      },
+      child: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
+        child: Container(
+          margin: EdgeInsets.symmetric(
+            horizontal: 20,
+            vertical: 30,
+          ),
+          child: Column(
+            children: [
+              bodySignUp(context),
+              goToLogin(context),
+            ],
+          ),
         ),
       ),
     );
@@ -39,9 +44,10 @@ class _SignUpPageState extends State<SignUpPage> {
           icon: null,
           hintText: "Name",
           statusObscure: false,
-          onChange: (_) => Provider.of<SignUpProvider>(context, listen: false)
-              .changeStatus(_),
           focus: TextFocus.focus,
+          onChange: (value) =>
+              Provider.of<SignUpProvider>(context, listen: false)
+                  .changeNameSignUpTextField(value),
         ),
         TextFieldItem(
           icon: null,

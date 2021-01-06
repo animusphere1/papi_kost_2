@@ -1,3 +1,3 @@
 enum TextType { phoneNumber, textNormal }
 
-enum TextFocus { focus, unFocus }
+enum TextFocus { focus, unFocus, autoFocus }

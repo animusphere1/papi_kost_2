@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:papi_kost/core/viewmodel/deviceinfoprovider.dart';
+import 'package:papi_kost/core/viewmodel/onboardprovider.dart';
 import 'package:papi_kost/ui/constant/constantwidget.dart';
 import 'package:papi_kost/ui/screen/home/widget/widget.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -8,20 +12,112 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  var hasil = 0.34;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).accentColor,
-      body: Container(
-        margin: EdgeInsets.symmetric(vertical: 25, horizontal: 20),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              appBarHome(context),
-              dividerTranstparant,
-              kostWidget(),
-            ],
+      backgroundColor: Theme.of(context).backgroundColor,
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            title: appBarHome(context),
+            pinned: true,
+            brightness: Brightness.light,
+            toolbarHeight: MediaQuery.of(context).size.height * hasil,
+            backgroundColor: Theme.of(context).accentColor,
           ),
+        ],
+      ),
+    );
+  }
+
+  //AppBar
+  Widget appBarHome(BuildContext context) {
+    return Container(
+      height: MediaQuery.of(context).size.height * 0.34,
+      color: Theme.of(context).accentColor,
+      child: appBarHomeMenu(context),
+    );
+  }
+
+  Widget appBarHomeMenu(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 20, vertical: 25),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Container(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Consumer<DeviceInfoCheck>(builder: (context, deviceInfo, _) {
+                  if (deviceInfo.deviceInfo == null) {
+                    deviceInfo.getDeviceInfo();
+                    return dividerTranstparant;
+                  }
+
+                  return Text(
+                    deviceInfo.deviceInfo,
+                    style: TextStyle(
+                      color: Theme.of(context).backgroundColor,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                    ),
+                  );
+                }),
+                dividerTranstparant,
+                Text(
+                  hasil.toString(),
+                  style: TextStyle(
+                    color: Theme.of(context).buttonColor,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15,
+                  ),
+                ),
+                Consumer<OnBoardProvider>(builder: (context, onboard, _) {
+                  onboard.dateTimeFunction();
+
+                  return Text(onboard.dateTIme.second.toString());
+                }),
+              ],
+            ),
+          ),
+          Container(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                circleButton(
+                  context,
+                  icon: Icons.home,
+                  color: Theme.of(context).buttonColor,
+                  onTap: () => null,
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget circleButton(BuildContext context,
+      {IconData icon, Color color, Function onTap}) {
+    return GestureDetector(
+      onTap: () => onTap != null ? onTap() : {},
+      child: Container(
+        height: 50,
+        width: 50,
+        decoration: new BoxDecoration(
+          color: color,
+          shape: BoxShape.circle,
+          border: Border.all(
+            color: Colors.grey.withOpacity(0.2),
+          ),
+        ),
+        child: new Icon(
+          icon,
+          color: Colors.white,
         ),
       ),
     );
@@ -41,108 +137,6 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-
-  // Widget coba() {
-  //   return FutureBuilder(
-  //     future: Provider.of<OnBoardProvider>(context).cobaganti(),
-  //     builder: (context, snapshot) {
-  //       if (Provider.of<OnBoardProvider>(context).dateTIme == null) {
-  //         return Text('sabar');
-  //       }
-
-  //       return Text(
-  //           Provider.of<OnBoardProvider>(context).dateTIme.second.toString());
-  //     },
-  //   );
-  // return FutureProvider<DateTime>(
-  //   create: (context) {
-  //     return Provider.of<OnBoardProvider>(context).cobaganti();
-  //   },
-  //   initialData: Provider.of<OnBoardProvider>(context).dateTIme,
-  //   child: Consumer<DateTime>(builder: (context, date, _) {
-  //     return Text(date.second.toString());
-  //   }),
-  // );
-  // return Consumer<OnBoardProvider>(builder: (context, onboard, _) {
-  //   return Text(onboard.dateTIme.second.toString());
-  // });
-}
-
-Widget appBarHome(BuildContext context) {
-  return Container(
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Container(
-          child: Row(
-            children: [
-              Icon(
-                Icons.cloud_upload,
-                size: 25,
-                color: Colors.white,
-              ),
-              SizedBox(
-                width: 10,
-              ),
-              Text(
-                '17 \u00B0 C ',
-                style: TextStyle(
-                  fontSize: 15,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              // coba(),
-            ],
-          ),
-        ),
-        Container(
-          child: Row(
-            children: [
-              circleButton(
-                icon: Icons.home,
-                color: Theme.of(context).accentColor,
-                onTap: null,
-              ),
-              SizedBox(
-                width: 10,
-              ),
-            ],
-          ),
-        ),
-      ],
-    ),
-  );
-}
-
-// Widget profilePicture() {
-//   return Consumer<OnBoardProvider>(
-//     builder: (context, onBoardProv, _) {
-//       if (onBoardProv.statusImage == false) {
-//         onBoardProv.check();
-//         return Text('sabar');
-//       }
-//       return onBoardProv.image;
-//     },
-//   );
-// }
-
-Widget circleButton({IconData icon, Color color, Function onTap}) {
-  return Container(
-    width: 40,
-    height: 40,
-    decoration: new BoxDecoration(
-      color: color,
-      shape: BoxShape.circle,
-      border: Border.all(
-        color: Colors.grey.withOpacity(0.2),
-      ),
-    ),
-    child: new Icon(
-      icon,
-      color: Colors.white,
-    ),
-  );
 }
 
 // Widget appBarHome(BuildContext context) {
@@ -185,22 +179,20 @@ Widget circleButton({IconData icon, Color color, Function onTap}) {
 //   );
 // }
 
-// Widget circleAvatarHome() {
-//   return Expanded(
-//     child: CircleAvatar(
-//       maxRadius: 30.0,
-//       child: Center(
-//         child: Text(
-//           'F',
-//           style: TextStyle(
-//             fontSize: 25,
-//             fontWeight: FontWeight.w900,
-//           ),
-//         ),
-//       ),
-//     ),
-//   );
-// }
+Widget circleAvatarHome() {
+  return CircleAvatar(
+    maxRadius: 30.0,
+    child: Center(
+      child: Text(
+        'F',
+        style: TextStyle(
+          fontSize: 25,
+          fontWeight: FontWeight.w900,
+        ),
+      ),
+    ),
+  );
+}
 
 // Widget bottomContainer() {
 //   return DraggableScrollableSheet(

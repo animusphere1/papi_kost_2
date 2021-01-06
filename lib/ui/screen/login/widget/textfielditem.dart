@@ -9,7 +9,7 @@ class TextFieldItem extends StatefulWidget {
   bool readOnly;
   TextInputType inputType;
   TextType textType;
-  Function(dynamic) onChange;
+  Function(String) onChange;
   TextFocus focus;
 
   TextFieldItem({
@@ -28,12 +28,11 @@ class TextFieldItem extends StatefulWidget {
 }
 
 class _TextFieldItemState extends State<TextFieldItem> {
-  TextEditingController _textEditingController = TextEditingController();
+  TextEditingController _textEditingController =
+      TextEditingController(text: '');
 
   @override
   initState() {
-    _textEditingController.text = '';
-
     super.initState();
   }
 
@@ -62,9 +61,7 @@ class _TextFieldItemState extends State<TextFieldItem> {
                   textType(),
                 ],
                 onChanged: (value) {
-                  widget.onChange != null
-                      ? widget.onChange(value)
-                      : DoNothingAction();
+                  widget.onChange != null ? widget.onChange(value) : {};
                 },
                 onEditingComplete: () => focusScope(context),
                 obscureText: widget.statusObscure,
@@ -100,11 +97,10 @@ class _TextFieldItemState extends State<TextFieldItem> {
   void changeObscureText() {
     widget.statusObscure = !widget.statusObscure;
 
-    if (widget.statusObscure == true) {
+    if (widget.statusObscure == true)
       widget.icon = Icons.remove_red_eye;
-    } else {
+    else
       widget.icon = Icons.visibility_off;
-    }
 
     setState(() {});
   }

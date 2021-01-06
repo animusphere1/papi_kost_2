@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:papi_kost/core/viewmodel/deviceinfoprovider.dart';
 import 'package:papi_kost/core/viewmodel/onboardprovider.dart';
 import 'package:papi_kost/core/viewmodel/signupprovider.dart';
 import 'package:papi_kost/core/viewmodel/themeprovider.dart';
@@ -27,10 +28,11 @@ class _MyAppState extends State<MyApp> {
         ChangeNotifierProvider(create: (context) => OnBoardProvider()),
         ChangeNotifierProvider(create: (context) => ThemeProvider()),
         ChangeNotifierProvider(create: (context) => SignUpProvider()),
+        ChangeNotifierProvider(create: (context) => DeviceInfoCheck()),
       ],
       child: Consumer<ThemeProvider>(builder: (context, themeProvider, _) {
         return MaterialApp(
-          debugShowCheckedModeBanner: true,
+          debugShowCheckedModeBanner: false,
           theme: themeProvider.theme,
           initialRoute: RouterGenerator.routeHome,
           onGenerateRoute: RouterGenerator.generateRoute,
