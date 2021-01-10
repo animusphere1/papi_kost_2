@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:device_info/device_info.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:imei_plugin/imei_plugin.dart';
@@ -13,8 +12,8 @@ class DeviceInfoCheck extends ChangeNotifier {
 
   DeviceInfoPlugin _deviceInfoPlugin = DeviceInfoPlugin();
 
-  //get device info
-  void getDeviceInfo() async {
+  //Load to get device info
+  void loadDeviceInfo() async {
     try {
       if (Platform.isAndroid) {
         var hasil = await _deviceInfoPlugin.androidInfo;
@@ -27,7 +26,6 @@ class DeviceInfoCheck extends ChangeNotifier {
     } catch (e) {
       print(e);
     }
-
     notifyListeners();
   }
 }

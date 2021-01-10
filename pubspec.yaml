@@ -30,6 +30,8 @@ dependencies:
   font_awesome_flutter: ^8.10.0
   device_info: ^1.0.0
   imei_plugin: ^1.2.0
+  geolocator: ^6.1.13
+  
  
   
 

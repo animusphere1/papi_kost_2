@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:papi_kost/core/viewmodel/deviceinfoprovider.dart';
+import 'package:papi_kost/core/viewmodel/locationuserprovider.dart';
 import 'package:papi_kost/core/viewmodel/onboardprovider.dart';
 import 'package:papi_kost/ui/constant/constantwidget.dart';
 import 'package:papi_kost/ui/screen/home/widget/widget.dart';
@@ -13,6 +14,13 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   var hasil = 0.34;
+
+  @override
+  initState() {
+    super.initState();
+    // Provider.of<LocationUser>(context, listen: false).getLocation();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,18 +58,25 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Consumer<DeviceInfoCheck>(builder: (context, deviceInfo, _) {
-                  if (deviceInfo.deviceInfo == null) {
-                    deviceInfo.getDeviceInfo();
-                    return dividerTranstparant;
+                Consumer2<LocationUser, DeviceInfoCheck>(
+                    builder: (context, locationUser, deviceInfo, _) {
+                  if (locationUser.positionUser == null) {
+                    locationUser.loadLocation();
+                    // deviceInfo.loadDeviceInfo();
+                    return Container(
+                      height: 20,
+                    );
                   }
 
-                  return Text(
-                    deviceInfo.deviceInfo,
-                    style: TextStyle(
-                      color: Theme.of(context).backgroundColor,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
+                  return Container(
+                    height: 20,
+                    child: Text(
+                      locationUser.positionUser.latitude.toString(),
+                      style: TextStyle(
+                        color: Theme.of(context).backgroundColor,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      ),
                     ),
                   );
                 }),
