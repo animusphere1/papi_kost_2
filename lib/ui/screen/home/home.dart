@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:papi_kost/core/viewmodel/deviceinfoprovider.dart';
-import 'package:papi_kost/core/viewmodel/locationuserprovider.dart';
 import 'package:papi_kost/core/viewmodel/onboardprovider.dart';
-import 'package:papi_kost/ui/constant/constantwidget.dart';
 import 'package:papi_kost/ui/screen/home/widget/widget.dart';
 import 'package:provider/provider.dart';
 
@@ -18,7 +14,6 @@ class _HomePageState extends State<HomePage> {
   @override
   initState() {
     super.initState();
-    // Provider.of<LocationUser>(context, listen: false).getLocation();
   }
 
   @override
@@ -28,10 +23,9 @@ class _HomePageState extends State<HomePage> {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            title: appBarHome(context),
             pinned: true,
-            brightness: Brightness.light,
-            toolbarHeight: MediaQuery.of(context).size.height * hasil,
+            title: _appBar(),
+            expandedHeight: MediaQuery.of(context).size.height * 0.11,
             backgroundColor: Theme.of(context).accentColor,
           ),
         ],
@@ -40,78 +34,70 @@ class _HomePageState extends State<HomePage> {
   }
 
   //AppBar
-  Widget appBarHome(BuildContext context) {
+  Widget _appBar() {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.34,
-      color: Theme.of(context).accentColor,
-      child: appBarHomeMenu(context),
-    );
-  }
-
-  Widget appBarHomeMenu(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: 20, vertical: 25),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          Container(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Consumer2<LocationUser, DeviceInfoCheck>(
-                    builder: (context, locationUser, deviceInfo, _) {
-                  if (locationUser.positionUser == null) {
-                    locationUser.loadLocation();
-                    // deviceInfo.loadDeviceInfo();
-                    return Container(
-                      height: 20,
-                    );
-                  }
-
-                  return Container(
-                    height: 20,
-                    child: Text(
-                      locationUser.positionUser.latitude.toString(),
-                      style: TextStyle(
-                        color: Theme.of(context).backgroundColor,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                      ),
-                    ),
-                  );
-                }),
-                dividerTranstparant,
-                Text(
-                  hasil.toString(),
-                  style: TextStyle(
-                    color: Theme.of(context).buttonColor,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15,
-                  ),
-                ),
-                Consumer<OnBoardProvider>(builder: (context, onboard, _) {
-                  onboard.dateTimeFunction();
-
-                  return Text(onboard.dateTIme.second.toString());
-                }),
-              ],
-            ),
-          ),
-          Container(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                circleButton(
-                  context,
-                  icon: Icons.home,
-                  color: Theme.of(context).buttonColor,
-                  onTap: () => null,
-                ),
-              ],
+          SearchWidgetHome(),
+          Expanded(
+            child: Container(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  iconStackLove(context),
+                  iconStackLove(context),
+                  iconStackLove(context),
+                ],
+              ),
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget iconStackLove(BuildContext context) {
+    return Stack(
+      children: [
+        Consumer<OnBoardProvider>(
+          builder: (context, prov, _) {
+            return iconLove(prov: () => prov.coba(context), context: context);
+          },
+        ),
+        Positioned(
+          right: 1,
+          child: Container(
+            height: MediaQuery.of(context).size.height * 0.06,
+            width: MediaQuery.of(context).size.width * 0.04,
+            decoration: BoxDecoration(
+              color: Theme.of(context).buttonColor,
+              shape: BoxShape.circle,
+            ),
+            child: Center(
+              child: Text(
+                Provider.of<OnBoardProvider>(context).indexdots.toString(),
+                style: TextStyle(
+                    color: Colors.yellow,
+                    fontSize: 8,
+                    fontWeight: FontWeight.bold),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget iconLove({Function() prov, BuildContext context}) {
+    return GestureDetector(
+      onTap: () {
+        prov != null ? prov() : {};
+      },
+      child: Container(
+        height: MediaQuery.of(context).size.height * 0.1,
+        child: Icon(Icons.favorite_border,
+            size: 30, color: Theme.of(context).backgroundColor),
       ),
     );
   }
@@ -127,7 +113,8 @@ class _HomePageState extends State<HomePage> {
           color: color,
           shape: BoxShape.circle,
           border: Border.all(
-            color: Colors.grey.withOpacity(0.2),
+            width: 2,
+            color: Theme.of(context).buttonColor,
           ),
         ),
         child: new Icon(

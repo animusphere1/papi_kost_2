@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:papi_kost/core/viewmodel/deviceinfoprovider.dart';
-import 'package:papi_kost/core/viewmodel/locationuserprovider.dart';
+import 'package:papi_kost/core/viewmodel/utilsprovider/deviceinfoprovider.dart';
+import 'package:papi_kost/core/viewmodel/utilsprovider/locationuserprovider.dart';
 import 'package:papi_kost/core/viewmodel/onboardprovider.dart';
 import 'package:papi_kost/core/viewmodel/signupprovider.dart';
 import 'package:papi_kost/core/viewmodel/themeprovider.dart';

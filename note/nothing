@@ -30,3 +30,90 @@ Widget _textField() {
         ),
       ),
     );
+
+    //Stream Agar Gak Lupa
+    Widget cobaText(BuildContext context) {
+  var prov = Provider.of<CheckDoang>(context);
+  // return Consumer<OnBoardProvider>(
+  //   builder: (context, onBoard, _) {
+  //     // onBoard.changeDateTime().then((e) {
+  //     //   print(e);
+  //     // });
+
+  //     if (onBoard.dateTime == null) return dividerTranstparant;
+
+  //     return Text(onBoard.dateTime.second.toString());
+  //   },
+  // );
+  // return StreamProvider<int>(
+  //   initialData: prov.hasil,
+  //   create: (context) {
+  //     // Pretend this is loading data and reporting the percent loaded.
+  //     return prov.streamInt();
+  //   },
+  //   child: Consumer<int>(builder: (context, i, _) {
+  //     return Text(i.toString());
+  //   }),
+  // );
+
+  return StreamProvider.value(
+    value: prov.streamInt(),
+    child: Consumer<List<int>>(builder: (context, i, _) {
+      return Text(i[1].toString());
+    }),
+  );
+}
+
+mport 'dart:async';
+
+import 'package:flutter/cupertino.dart';
+
+class CheckDoang extends ChangeNotifier {
+  Duration interval = Duration(seconds: 1);
+  final streamController = StreamController<int>();
+
+  Stream<List<int>> streamInt() {
+    List<int> angka = [];
+    return Stream<List<int>>.periodic(
+        Duration(milliseconds: 100), (count) => angka = [1, 2, 3]);
+  }
+}
+
+//stream 2
+
+child: Center(
+                child: StreamProvider.value(
+                  value: Provider.of<CheckDoang>(context).streamInt(),
+                  initialData: 0,
+                  child: Consumer<int>(builder: (context, i, _) {
+                    if (i % 20 == 0) {
+                      print('kosong');
+                      return Text('kosong');
+                    }
+                    return Text(i.toString());
+                  }),
+                ),
+              ),
+
+              import 'dart:async';
+
+import 'package:flutter/material.dart';
+
+class CheckDoang extends ChangeNotifier {
+  Duration interval = Duration(seconds: 1);
+  StreamController<int> controller = StreamController<int>();
+
+  int _listInt;
+  int get listInt => _listInt;
+
+  Stream<int> streamInt() {
+    return Stream<int>.periodic(Duration(milliseconds: 100), (count) {
+      return count++;
+    });
+  }
+
+  masukan(int angka) {
+    _listInt = angka;
+    notifyListeners();
+  }
+}
