@@ -85,7 +85,8 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   pindah(BuildContext context) {
-    Navigator.pushNamed(context, RouterGenerator.routeHome);
+    Navigator.pushNamedAndRemoveUntil(
+        context, RouterGenerator.routeHome, (route) => false);
   }
 
   Widget textForgotPassword(BuildContext context) {

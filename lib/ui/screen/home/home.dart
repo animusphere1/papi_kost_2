@@ -17,7 +17,6 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        brightness: Brightness.light,
         elevation: 0,
         backgroundColor: Colors.white,
         automaticallyImplyLeading: false,

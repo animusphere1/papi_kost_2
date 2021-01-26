@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:papi_kost/core/viewmodel/uiprovider/homeprovider.dart';
-import 'package:papi_kost/core/viewmodel/utilsprovider/deviceinfoprovider.dart';
-import 'package:papi_kost/core/viewmodel/utilsprovider/locationuserprovider.dart';
 import 'package:papi_kost/core/viewmodel/uiprovider/onboardprovider.dart';
 import 'package:papi_kost/core/viewmodel/uiprovider/signupprovider.dart';
-import 'package:papi_kost/core/viewmodel/themeprovider.dart';
+import 'package:papi_kost/core/viewmodel/utilsprovider/deviceinfoprovider.dart';
+import 'package:papi_kost/core/viewmodel/utilsprovider/locationuserprovider.dart';
 import 'package:papi_kost/ui/router/router_generator.dart';
 import 'package:provider/provider.dart';
+import 'core/viewmodel/uiprovider/homeprovider.dart';
+import 'core/viewmodel/uiprovider/themeprovider.dart';
 
 void main() {
   runApp(MyApp());
@@ -34,7 +33,7 @@ class _MyAppState extends State<MyApp> {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: themeProvider.theme,
-          initialRoute: RouterGenerator.routeLogin,
+          initialRoute: RouterGenerator.routeOnboard,
           onGenerateRoute: RouterGenerator.generateRoute,
         );
       }),

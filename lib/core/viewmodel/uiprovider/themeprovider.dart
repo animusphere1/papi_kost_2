@@ -31,6 +31,7 @@ class ThemeProvider extends ChangeNotifier {
       statusBarColor: "#ff6600".toColor(),
       statusBarIconBrightness: Brightness.light,
     ));
+
     notifyListeners();
   }
 }
