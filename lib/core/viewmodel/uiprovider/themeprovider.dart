@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:supercharged/supercharged.dart';
 
 class ThemeProvider extends ChangeNotifier {
@@ -26,6 +27,10 @@ class ThemeProvider extends ChangeNotifier {
       buttonColor: "#ff6600".toColor(),
       fontFamily: 'NunitoSans',
     );
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: "#ff6600".toColor(),
+      statusBarIconBrightness: Brightness.light,
+    ));
     notifyListeners();
   }
 }

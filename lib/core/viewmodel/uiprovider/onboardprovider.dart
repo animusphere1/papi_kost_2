@@ -9,8 +9,8 @@ class OnBoardProvider extends ChangeNotifier {
   DateTime _dateTime;
   DateTime get dateTime => _dateTime;
 
-  void changeDots(int index) {
-    _indexdots = index;
+  void changeDots(int index) async {
+    _indexdots = await index;
     notifyListeners();
   }
 

@@ -1,6 +1,6 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
-import 'package:papi_kost/core/viewmodel/onboardprovider.dart';
+import 'package:papi_kost/core/viewmodel/uiprovider/onboardprovider.dart';
 import 'package:papi_kost/ui/constant/constantimage.dart';
 import 'package:papi_kost/ui/router/router_generator.dart';
 import 'package:supercharged/supercharged.dart';
@@ -14,12 +14,14 @@ class OnBoardPageCore extends StatefulWidget {
 
 class _OnBoardPageCoreState extends State<OnBoardPageCore> {
   PageController _pageController = PageController(
-    initialPage: 0,
+    initialPage: 1,
     viewportFraction: 1.0,
   );
 
   @override
   void initState() {
+    Provider.of<OnBoardProvider>(context, listen: false)
+        .changeDots(_pageController.initialPage);
     super.initState();
   }
 

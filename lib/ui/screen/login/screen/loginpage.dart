@@ -26,7 +26,7 @@ class _LoginPageState extends State<LoginPage> {
           horizontal: 20,
           vertical: 30,
         ),
-        color: Theme.of(context).backgroundColor,
+        // color: Theme.of(context).backgroundColor,
         child: Column(
           children: [
             bodyLogin(context),
@@ -85,7 +85,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   pindah(BuildContext context) {
-    Navigator.pushNamed(context, RouterGenerator.routeHome, arguments: 'fajar');
+    Navigator.pushNamed(context, RouterGenerator.routeHome);
   }
 
   Widget textForgotPassword(BuildContext context) {
