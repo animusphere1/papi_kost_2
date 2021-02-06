@@ -18,6 +18,7 @@ class _AppBarHomeState extends State<AppBarHome> {
           SearchWidgetHome(),
           Expanded(
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 iconStackLove(context),
                 iconStackLove(context),
@@ -65,7 +66,8 @@ class _AppBarHomeState extends State<AppBarHome> {
   Widget iconLove({Function() prov, BuildContext context}) {
     return GestureDetector(
       onTap: () {
-        prov != null ? prov() : {};
+        // prov != null ? prov() : {};
+        // Provider.of<OnBoardProvider>(context, listen: false);
       },
       child: Container(
         height: MediaQuery.of(context).size.height * 0.1,

@@ -18,11 +18,12 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  var hasil = 0;
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => OnBoardProvider()),
+        ChangeNotifierProvider(create: (context) => OnBoardProvider(101)),
         ChangeNotifierProvider(create: (context) => ThemeProvider()),
         ChangeNotifierProvider(create: (context) => SignUpProvider()),
         ChangeNotifierProvider(create: (context) => DeviceInfoCheck()),
@@ -33,7 +34,7 @@ class _MyAppState extends State<MyApp> {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: themeProvider.theme,
-          initialRoute: RouterGenerator.routeOnboard,
+          initialRoute: RouterGenerator.routeLogin,
           onGenerateRoute: RouterGenerator.generateRoute,
         );
       }),

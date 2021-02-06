@@ -75,7 +75,7 @@ class _LoginPageState extends State<LoginPage> {
               titleButton: 'Log in',
               colorButtonBackground: Theme.of(context).accentColor,
               colorTitleButton: Theme.of(context).backgroundColor,
-              function: (context) => pindah(context),
+              function: (context) => pindah(context, RouterGenerator.routeHome),
             ),
           ),
           textForgotPassword(context),
@@ -84,9 +84,8 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  pindah(BuildContext context) {
-    Navigator.pushNamedAndRemoveUntil(
-        context, RouterGenerator.routeHome, (route) => false);
+  pindah(BuildContext context, String route) {
+    Navigator.pushNamedAndRemoveUntil(context, route, (route) => false);
   }
 
   Widget textForgotPassword(BuildContext context) {
