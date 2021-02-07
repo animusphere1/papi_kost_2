@@ -25,7 +25,7 @@ class _SearchWidgetHomeState extends State<SearchWidgetHome> {
       decoration: BoxDecoration(
         color: Colors.white,
         border: Border.all(color: Colors.black.withOpacity(0.09)),
-        borderRadius: BorderRadius.circular(6),
+        borderRadius: BorderRadius.circular(20),
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),

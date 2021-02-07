@@ -6,6 +6,7 @@ import 'package:papi_kost/core/viewmodel/utilsprovider/locationuserprovider.dart
 import 'package:papi_kost/ui/router/router_generator.dart';
 import 'package:provider/provider.dart';
 import 'core/viewmodel/uiprovider/homeprovider.dart';
+import 'core/viewmodel/uiprovider/iconhomeprovider/iconprovider.dart';
 import 'core/viewmodel/uiprovider/themeprovider.dart';
 
 void main() {
@@ -23,18 +24,19 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => OnBoardProvider(101)),
+        ChangeNotifierProvider(create: (context) => OnBoardProvider()),
         ChangeNotifierProvider(create: (context) => ThemeProvider()),
         ChangeNotifierProvider(create: (context) => SignUpProvider()),
         ChangeNotifierProvider(create: (context) => DeviceInfoCheck()),
         ChangeNotifierProvider(create: (context) => LocationUser()),
         ChangeNotifierProvider(create: (context) => HomeProvider()),
+        ChangeNotifierProvider(create: (context) => IconProvider()),
       ],
       child: Consumer<ThemeProvider>(builder: (context, themeProvider, _) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: themeProvider.theme,
-          initialRoute: RouterGenerator.routeLogin,
+          initialRoute: RouterGenerator.routeHome,
           onGenerateRoute: RouterGenerator.generateRoute,
         );
       }),

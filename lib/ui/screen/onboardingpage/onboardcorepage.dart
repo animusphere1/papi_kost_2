@@ -14,7 +14,7 @@ class OnBoardPageCore extends StatefulWidget {
 
 class _OnBoardPageCoreState extends State<OnBoardPageCore> {
   PageController _pageController = PageController(
-    initialPage: 1,
+    initialPage: 0,
     viewportFraction: 1.0,
   );
 

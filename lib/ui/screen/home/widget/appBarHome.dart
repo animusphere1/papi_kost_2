@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:papi_kost/core/viewmodel/uiprovider/onboardprovider.dart';
+import 'package:papi_kost/core/viewmodel/uiprovider/iconhomeprovider/iconprovider.dart';
 import 'package:papi_kost/ui/screen/home/widget/widget.dart';
 import 'package:provider/provider.dart';
 
@@ -10,8 +10,14 @@ class AppBarHome extends StatefulWidget {
 
 class _AppBarHomeState extends State<AppBarHome> {
   @override
+  initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsetsDirectional.only(top: 20),
       height: MediaQuery.of(context).size.height * 0.1,
       child: Row(
         children: [
@@ -32,47 +38,68 @@ class _AppBarHomeState extends State<AppBarHome> {
   }
 
   Widget iconStackLove(BuildContext context) {
-    return Stack(
-      children: [
-        Consumer<OnBoardProvider>(
-          builder: (context, prov, _) {
-            return iconLove(prov: () => prov.coba(context), context: context);
-          },
-        ),
-        Positioned(
-          right: 1,
-          child: Container(
-            height: MediaQuery.of(context).size.height * 0.06,
-            width: MediaQuery.of(context).size.width * 0.04,
-            decoration: BoxDecoration(
-              color: Theme.of(context).buttonColor,
-              shape: BoxShape.circle,
-            ),
-            child: Center(
-              child: Text(
-                Provider.of<OnBoardProvider>(context).indexdots.toString(),
-                style: TextStyle(
-                    color: Colors.yellow,
-                    fontSize: 8,
-                    fontWeight: FontWeight.bold),
+    return Consumer<IconProvider>(
+      builder: (context, prov, _) {
+        if (prov.haveNotificationLove == null &&
+            prov.totalCountIconLove == null) {
+          prov.getNotificationIconLove();
+          return Stack(
+            children: [
+              iconLove(context, prov),
+            ],
+          );
+        }
+
+        if (prov.haveNotificationLove == true && prov.totalCountIconLove != 0) {
+          return Stack(
+            children: [
+              iconLove(context, prov),
+              Positioned(
+                right: 1,
+                child: Container(
+                  height: MediaQuery.of(context).size.height * 0.06,
+                  width: MediaQuery.of(context).size.width * 0.04,
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).buttonColor,
+                    shape: BoxShape.circle,
+                  ),
+                  child: Center(
+                    child: Text(
+                      prov.totalCountIconLove.toString(),
+                      style: TextStyle(
+                        color: Colors.yellow,
+                        fontSize: 8,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
               ),
-            ),
-          ),
-        ),
-      ],
+            ],
+          );
+        }
+
+        return Stack(
+          children: [
+            iconLove(context, prov),
+          ],
+        );
+      },
     );
   }
 
-  Widget iconLove({Function() prov, BuildContext context}) {
+  Widget iconLove(BuildContext context, IconProvider prov) {
     return GestureDetector(
       onTap: () {
-        // prov != null ? prov() : {};
-        // Provider.of<OnBoardProvider>(context, listen: false);
+        prov.deleteNotificationIconLove();
       },
       child: Container(
         height: MediaQuery.of(context).size.height * 0.1,
-        child: Icon(Icons.favorite_border,
-            size: 30, color: Theme.of(context).backgroundColor),
+        child: Icon(
+          Icons.favorite,
+          size: 30,
+          color: Theme.of(context).buttonColor,
+        ),
       ),
     );
   }
