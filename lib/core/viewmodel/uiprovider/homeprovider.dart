@@ -7,11 +7,16 @@ class HomeProvider extends ChangeNotifier {
   String get hintTextRand => _hintTextRand;
 
   Random rand = Random();
-  List<String> _listHintTextRand = ['Cari', 'Apa', 'kaka'];
+  List<String> _listHintTextRand = [
+    'Cari Apa Kaka',
+    'Ada Yang Bisa Di Bantu',
+    'Kaka Beli Kagak'
+  ];
 
   void changeHintText() async {
+    await Future.delayed(Duration(seconds: 1));
     Timer.periodic(Duration(seconds: 1), (timer) {
-      _hintTextRand = _listHintTextRand[rand.nextInt(3)];
+      _hintTextRand = _listHintTextRand[rand.nextInt(_listHintTextRand.length)];
       notifyListeners();
     });
   }

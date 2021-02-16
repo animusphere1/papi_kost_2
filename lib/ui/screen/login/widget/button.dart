@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 class Button extends StatelessWidget {
-  Function function;
+  Function onClick;
   String titleButton;
   Color colorButtonBackground;
   Color colorTitleButton;
   IconData icon;
 
   Button({
-    this.function,
+    this.onClick,
     this.colorButtonBackground,
     this.titleButton,
     this.colorTitleButton,
@@ -18,9 +18,7 @@ class Button extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        function != null ? function(context) : print('kosong');
-      },
+      onTap: () => onClick != null ? onClick() : print('kosong'),
       child: SingleChildScrollView(
         child: Container(
           height: MediaQuery.of(context).size.height * 0.08,

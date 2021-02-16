@@ -1,6 +1,4 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
-
 import 'widget/appBarHome.dart';
 
 class HomePage extends StatefulWidget {
@@ -9,9 +7,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int angka = 0;
-  Timer timer;
-
   @override
   initState() {
     super.initState();

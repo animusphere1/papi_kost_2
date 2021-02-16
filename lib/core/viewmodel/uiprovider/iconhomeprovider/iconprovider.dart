@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/cupertino.dart';
 
 class IconProvider extends ChangeNotifier {
@@ -19,8 +20,12 @@ class IconProvider extends ChangeNotifier {
   }
 
   deleteNotificationIconLove() {
-    _totalCountIconLove = 0;
-    _haveNotificationLove = true;
-    notifyListeners();
+    print(Platform.operatingSystem);
+
+    if (Platform.isAndroid) {
+      _totalCountIconLove = 0;
+      _haveNotificationLove = true;
+      notifyListeners();
+    }
   }
 }

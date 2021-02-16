@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:papi_kost/ui/router/router_generator.dart';
+import 'package:papi_kost/core/viewmodel/uiprovider/homeprovider.dart';
 import 'package:papi_kost/ui/screen/login/widget/widget.dart';
+import 'package:provider/provider.dart';
 import 'package:supercharged/supercharged.dart';
 import 'package:papi_kost/ui/constant/enum.dart';
 
@@ -75,7 +76,7 @@ class _LoginPageState extends State<LoginPage> {
               titleButton: 'Log in',
               colorButtonBackground: Theme.of(context).accentColor,
               colorTitleButton: Theme.of(context).backgroundColor,
-              function: (context) => pindah(context, RouterGenerator.routeHome),
+              onClick: (value) => null,
             ),
           ),
           textForgotPassword(context),
@@ -84,8 +85,12 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  pindah(BuildContext context, String route) {
-    Navigator.pushNamedAndRemoveUntil(context, route, (route) => false);
+  // pindah(BuildContext context, String route) {
+  //   Navigator.pushNamedAndRemoveUntil(context, route, (route) => false);
+  // }
+
+  pindah() {
+    Navigator.pop(context, true);
   }
 
   Widget textForgotPassword(BuildContext context) {
@@ -129,7 +134,9 @@ class _LoginPageState extends State<LoginPage> {
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 10),
         child: GestureDetector(
-          onTap: () {},
+          onTap: () {
+            widget.pageController.jumpToPage(1);
+          },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.end,

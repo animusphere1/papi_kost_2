@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:papi_kost/core/viewmodel/uiprovider/iconhomeprovider/iconprovider.dart';
 import 'package:papi_kost/ui/screen/home/widget/widget.dart';
+import 'package:papi_kost/ui/screen/login/login.dart';
 import 'package:provider/provider.dart';
 
 class AppBarHome extends StatefulWidget {
@@ -40,6 +41,7 @@ class _AppBarHomeState extends State<AppBarHome> {
   Widget iconStackLove(BuildContext context) {
     return Consumer<IconProvider>(
       builder: (context, prov, _) {
+        // print(con.haveNotificationLove);
         if (prov.haveNotificationLove == null &&
             prov.totalCountIconLove == null) {
           prov.getNotificationIconLove();
@@ -90,7 +92,15 @@ class _AppBarHomeState extends State<AppBarHome> {
 
   Widget iconLove(BuildContext context, IconProvider prov) {
     return GestureDetector(
-      onTap: () {
+      onTap: () async {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) {
+              return Login();
+            },
+          ),
+        );
         prov.deleteNotificationIconLove();
       },
       child: Container(

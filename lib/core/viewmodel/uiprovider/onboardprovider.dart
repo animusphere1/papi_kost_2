@@ -8,7 +8,8 @@ class OnBoardProvider extends ChangeNotifier {
   int id;
 
   void changeDots(int index) async {
-    _indexdots = await index;
+    await Future.delayed(Duration(milliseconds: 10));
+    _indexdots = index;
     notifyListeners();
   }
 
