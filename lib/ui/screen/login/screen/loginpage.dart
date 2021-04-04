@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:papi_kost/core/viewmodel/uiprovider/homeprovider.dart';
+import 'package:papi_kost/ui/router/router_generator.dart';
 import 'package:papi_kost/ui/screen/login/widget/widget.dart';
-import 'package:provider/provider.dart';
 import 'package:supercharged/supercharged.dart';
 import 'package:papi_kost/ui/constant/enum.dart';
 
@@ -62,7 +61,7 @@ class _LoginPageState extends State<LoginPage> {
             icon: null,
             hintText: "Email or Username",
             focus: TextFocus.focus,
-            onChange: (value) => null,
+            onChange: (value) => print(value),
           ),
           TextFieldItem(
             icon: Icons.remove_red_eye,
@@ -76,7 +75,7 @@ class _LoginPageState extends State<LoginPage> {
               titleButton: 'Log in',
               colorButtonBackground: Theme.of(context).accentColor,
               colorTitleButton: Theme.of(context).backgroundColor,
-              onClick: (value) => null,
+              onClick: () => pindah(context, RouterGenerator.routeHome),
             ),
           ),
           textForgotPassword(context),
@@ -85,13 +84,13 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  // pindah(BuildContext context, String route) {
-  //   Navigator.pushNamedAndRemoveUntil(context, route, (route) => false);
-  // }
-
-  pindah() {
-    Navigator.pop(context, true);
+  pindah(BuildContext context, String route) {
+    Navigator.pushNamedAndRemoveUntil(context, route, (route) => false);
   }
+
+  // pindah() {
+  //   Navigator.pop(context, true);
+  // }
 
   Widget textForgotPassword(BuildContext context) {
     return Text(

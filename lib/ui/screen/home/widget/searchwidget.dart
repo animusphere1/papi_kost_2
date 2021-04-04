@@ -11,12 +11,6 @@ class _SearchWidgetHomeState extends State<SearchWidgetHome> {
   TextEditingController controller = TextEditingController();
 
   @override
-  initState() {
-    Provider.of<HomeProvider>(context, listen: false).changeHintText();
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Consumer<HomeProvider>(
       builder: (context, prov, _) {

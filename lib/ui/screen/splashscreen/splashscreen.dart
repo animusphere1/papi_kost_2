@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:papi_kost/core/viewmodel/uiprovider/onboardprovider.dart';
 import 'package:papi_kost/ui/constant/constantimage.dart';
+import 'package:papi_kost/ui/router/router_generator.dart';
+import 'package:provider/provider.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -7,9 +10,26 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  var prov = OnBoardProvider();
+
   @override
   void initState() {
     super.initState();
+
+    Future.delayed(Duration(seconds: 5), () {
+      Provider.of<OnBoardProvider>(context, listen: false).changeStatus();
+      switch (prov.statusLogin) {
+        case true:
+          Navigator.pushNamedAndRemoveUntil(
+              context, RouterGenerator.routeLogin, (route) => false);
+          break;
+        case false:
+          Navigator.pushNamedAndRemoveUntil(
+              context, RouterGenerator.routeHome, (route) => false);
+          break;
+        default:
+      }
+    });
   }
 
   @override

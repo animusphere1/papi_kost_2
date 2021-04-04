@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:papi_kost/core/viewmodel/uiprovider/iconhomeprovider/iconprovider.dart';
+import 'package:papi_kost/core/viewmodel/utilsprovider/locationuserprovider.dart';
 import 'package:papi_kost/ui/screen/home/widget/widget.dart';
-import 'package:papi_kost/ui/screen/login/login.dart';
 import 'package:provider/provider.dart';
 
 class AppBarHome extends StatefulWidget {
@@ -13,6 +13,7 @@ class _AppBarHomeState extends State<AppBarHome> {
   @override
   initState() {
     super.initState();
+    Provider.of<LocationUser>(context, listen: false).loadLocation();
   }
 
   @override
@@ -93,14 +94,6 @@ class _AppBarHomeState extends State<AppBarHome> {
   Widget iconLove(BuildContext context, IconProvider prov) {
     return GestureDetector(
       onTap: () async {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) {
-              return Login();
-            },
-          ),
-        );
         prov.deleteNotificationIconLove();
       },
       child: Container(

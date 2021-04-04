@@ -5,11 +5,17 @@ class OnBoardProvider extends ChangeNotifier {
   int _indexdots = 0;
   int get indexdots => _indexdots;
 
-  int id;
+  bool _statusLogin = true;
+  bool get statusLogin => _statusLogin;
 
   void changeDots(int index) async {
     await Future.delayed(Duration(milliseconds: 10));
     _indexdots = index;
+    notifyListeners();
+  }
+
+  void changeStatus() {
+    _statusLogin = false;
     notifyListeners();
   }
 
