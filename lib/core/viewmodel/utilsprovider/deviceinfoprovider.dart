@@ -28,4 +28,9 @@ class DeviceInfoCheck extends ChangeNotifier {
     }
     notifyListeners();
   }
+
+  Future<String> dapatDevice() async {
+    await Future.delayed(Duration(seconds: 1));
+    return _deviceInfo;
+  }
 }

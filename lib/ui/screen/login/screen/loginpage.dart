@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:papi_kost/core/viewmodel/uiprovider/onboardprovider.dart';
 import 'package:papi_kost/ui/router/router_generator.dart';
 import 'package:papi_kost/ui/screen/login/widget/widget.dart';
+import 'package:provider/provider.dart';
 import 'package:supercharged/supercharged.dart';
 import 'package:papi_kost/ui/constant/enum.dart';
 
@@ -15,6 +17,12 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  int angka = 10;
+
+  int ubah() {
+    return 100;
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -85,7 +93,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   pindah(BuildContext context, String route) {
-    Navigator.pushNamedAndRemoveUntil(context, route, (route) => false);
+    // Navigator.pushNamedAndRemoveUntil(context, route, (route) => false);
   }
 
   // pindah() {
@@ -131,10 +139,12 @@ class _LoginPageState extends State<LoginPage> {
   Widget goToSignUp(BuildContext context) {
     return Expanded(
       child: Container(
-        margin: EdgeInsets.symmetric(vertical: 10),
+        margin: EdgeInsets.symmetric(vertical: ubah().toDouble()),
         child: GestureDetector(
           onTap: () {
-            widget.pageController.jumpToPage(1);
+            // widget.pageController.animateToPage(1,
+            //     curve: Curves.easeIn, duration: Duration(milliseconds: 500));
+            ubah();
           },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,

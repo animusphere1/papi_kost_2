@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:papi_kost/core/viewmodel/uiprovider/homeprovider.dart';
 import 'package:provider/provider.dart';
 import 'widget/appBarHome.dart';
+import 'widget/widget.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -23,16 +24,11 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    var nama = 2;
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            elevation: 0,
-            title: AppBarHome(),
-            backgroundColor: Colors.transparent,
-          ),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [AppBarHome(), CollectionKost()],
+        ),
       ),
     );
   }

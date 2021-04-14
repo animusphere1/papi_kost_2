@@ -19,14 +19,13 @@ class _AppBarHomeState extends State<AppBarHome> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsetsDirectional.only(top: 20),
-      height: MediaQuery.of(context).size.height * 0.1,
+      margin: EdgeInsets.only(top: 25, left: 10, right: 10),
       child: Row(
         children: [
           SearchWidgetHome(),
           Expanded(
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 iconStackLove(context),
                 iconStackLove(context),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:papi_kost/core/viewmodel/utilsprovider/deviceinfoprovider.dart';
 import 'package:papi_kost/ui/constant/enum.dart';
+import 'package:provider/provider.dart';
 
 // ignore: must_be_immutable
 class TextFieldItem extends StatefulWidget {
