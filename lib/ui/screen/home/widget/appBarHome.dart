@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:papi_kost/core/viewmodel/uiprovider/iconhomeprovider/iconprovider.dart';
+import 'package:papi_kost/core/viewmodel/uiprovider/onboardprovider.dart';
 import 'package:papi_kost/core/viewmodel/utilsprovider/locationuserprovider.dart';
 import 'package:papi_kost/ui/screen/home/widget/widget.dart';
 import 'package:provider/provider.dart';
@@ -41,7 +42,6 @@ class _AppBarHomeState extends State<AppBarHome> {
   Widget iconStackLove(BuildContext context) {
     return Consumer<IconProvider>(
       builder: (context, prov, _) {
-        // print(con.haveNotificationLove);
         if (prov.haveNotificationLove == null &&
             prov.totalCountIconLove == null) {
           prov.getNotificationIconLove();
@@ -57,12 +57,11 @@ class _AppBarHomeState extends State<AppBarHome> {
             children: [
               iconLove(context, prov),
               Positioned(
-                right: 1,
                 child: Container(
                   height: MediaQuery.of(context).size.height * 0.06,
                   width: MediaQuery.of(context).size.width * 0.04,
                   decoration: BoxDecoration(
-                    color: Theme.of(context).buttonColor,
+                    color: Colors.red,
                     shape: BoxShape.circle,
                   ),
                   child: Center(
@@ -94,6 +93,7 @@ class _AppBarHomeState extends State<AppBarHome> {
     return GestureDetector(
       onTap: () async {
         prov.deleteNotificationIconLove();
+        Provider.of<OnBoardProvider>(context, listen: false).coba(context);
       },
       child: Container(
         height: MediaQuery.of(context).size.height * 0.1,

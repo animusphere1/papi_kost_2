@@ -5,8 +5,10 @@ class OnBoardPage extends StatelessWidget {
   final String titleTop;
   final String titleMid;
   final String image;
+  final Function(String) function;
 
-  const OnBoardPage({Key key, this.titleTop, this.titleMid, this.image})
+  const OnBoardPage(
+      {Key key, this.titleTop, this.titleMid, this.image, this.function})
       : super(key: key);
 
   @override
@@ -18,10 +20,15 @@ class OnBoardPage extends StatelessWidget {
           Container(
             height: MediaQuery.of(context).size.height * 0.2,
           ),
-          Container(
-            height: MediaQuery.of(context).size.height * 0.4,
-            child: Image.asset(
-              image,
+          GestureDetector(
+            onTap: () {
+              function('nama');
+            },
+            child: Container(
+              height: MediaQuery.of(context).size.height * 0.4,
+              child: Image.asset(
+                image,
+              ),
             ),
           ),
           Container(

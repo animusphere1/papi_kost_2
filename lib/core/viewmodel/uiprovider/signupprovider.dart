@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class SignUpProvider extends ChangeNotifier {
   //attributte
@@ -15,5 +16,15 @@ class SignUpProvider extends ChangeNotifier {
     print('name sign up : $nameSignUp');
     _nameSignUp = value;
     notifyListeners();
+  }
+
+  void goToSignUp(PageController controller, BuildContext context) {
+    controller.jumpToPage(1);
+
+    showModalBottomSheet(
+        context: context,
+        builder: (context) {
+          return Text(context.owner.debugBuilding.toString());
+        });
   }
 }

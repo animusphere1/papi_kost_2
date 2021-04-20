@@ -21,18 +21,20 @@ class OnBoardProvider extends ChangeNotifier {
 
   coba(BuildContext context) {
     showDialog(
-        context: context,
-        builder: (_) => Container(
-              child: Center(
-                child: GestureDetector(
-                  onTap: () {
-                    _indexdots = _indexdots + 2;
-                    notifyListeners();
-                  },
-                  child: Text('tekan aku'),
-                ),
-              ),
-            ));
+      context: context,
+      builder: (_) => Container(
+        child: Center(
+          child: GestureDetector(
+            onTap: () {
+              _indexdots = _indexdots + 2;
+              notifyListeners();
+              Navigator.pop(context);
+            },
+            child: Text('tekan aku'),
+          ),
+        ),
+      ),
+    );
 
     print('bisa jalan');
   }

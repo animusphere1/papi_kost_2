@@ -179,6 +179,9 @@ class _OnBoardPageCoreState extends State<OnBoardPageCore> {
   //List PageView
   List<OnBoardPage> onBoardPageList = [
     OnBoardPage(
+      function: (value) {
+        print(value);
+      },
       titleMid: "Temukan Tempat Tinggal Impian Mu",
       titleTop: "Find a Place",
       image: placetofind,

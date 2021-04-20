@@ -19,10 +19,6 @@ class CollectionKost extends StatelessWidget {
             height: MediaQuery.of(context).size.height * 0.1,
             color: Colors.yellow,
           ),
-          Container(
-            height: MediaQuery.of(context).size.height * 0.1,
-            color: Colors.yellow,
-          ),
         ],
       ),
     );

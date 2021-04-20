@@ -10,6 +10,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  ScrollController _scrollController = ScrollController();
+
   @override
   initState() {
     super.initState();
@@ -26,8 +28,12 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
+        controller: _scrollController,
         child: Column(
-          children: [AppBarHome(), CollectionKost()],
+          children: [
+            AppBarHome(),
+            CollectionKost(),
+          ],
         ),
       ),
     );
