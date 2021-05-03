@@ -84,7 +84,7 @@ flutter:
       fonts:
         - asset: assets/fonts/NunitoSans-Regular.ttf
         - asset: assets/fonts/NunitoSans-Bold.ttf
-          weight: 700
+          weight: 800
         - asset: assets/fonts/NunitoSans-Light.ttf
           weight: 300
   #

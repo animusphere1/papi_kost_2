@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:papi_kost/core/viewmodel/uiprovider/onboardprovider.dart';
 import 'package:papi_kost/ui/constant/constantimage.dart';
-import 'package:papi_kost/ui/router/router_generator.dart';
+import 'package:papi_kost/ui/router/routergenerator.dart';
 import 'package:provider/provider.dart';
 
 class SplashScreen extends StatefulWidget {

@@ -8,14 +8,8 @@ class ThemeProvider extends ChangeNotifier {
   ThemeData _themeData;
   ThemeData get theme => _themeData;
 
-  // BuildContext _context;
-  // BuildContext get contextlocal => _context;
-
-  BuildContext context;
-
   ThemeProvider() {
     checkTheme();
-    // changeTheme(context);
   }
 
   //function checking ui theme
@@ -27,6 +21,7 @@ class ThemeProvider extends ChangeNotifier {
       buttonColor: "#ff6600".toColor(),
       fontFamily: 'NunitoSans',
     );
+
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor: "#ff6600".toColor(),
       statusBarIconBrightness: Brightness.light,

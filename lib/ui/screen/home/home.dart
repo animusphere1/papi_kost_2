@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:papi_kost/core/viewmodel/uiprovider/homeprovider.dart';
-import 'package:provider/provider.dart';
-import 'widget/appBarHome.dart';
-import 'widget/widget.dart';
+import 'package:flutter/services.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -13,28 +10,34 @@ class _HomePageState extends State<HomePage> {
   ScrollController _scrollController = ScrollController();
 
   @override
-  initState() {
-    super.initState();
-    Provider.of<HomeProvider>(context, listen: false).changeHintText();
-  }
-
-  @override
-  dispose() {
-    print('close');
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      statusBarIconBrightness: Brightness.light,
+    ));
     return Scaffold(
-      body: SingleChildScrollView(
-        controller: _scrollController,
-        child: Column(
-          children: [
-            AppBarHome(),
-            CollectionKost(),
-          ],
+      body: Container(
+        margin: EdgeInsets.symmetric(horizontal: 10, vertical: 25),
+        child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+          controller: _scrollController,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              appBarHome(),
+            ],
+          ),
         ),
+      ),
+    );
+  }
+
+  Widget appBarHome() {
+    return Container(
+      color: Colors.blue,
+      height: MediaQuery.of(context).size.height * 0.1,
+      child: Row(
+        children: [],
       ),
     );
   }

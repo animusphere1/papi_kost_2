@@ -3,7 +3,7 @@ import 'package:papi_kost/core/viewmodel/uiprovider/onboardprovider.dart';
 import 'package:papi_kost/core/viewmodel/uiprovider/signupprovider.dart';
 import 'package:papi_kost/core/viewmodel/utilsprovider/deviceinfoprovider.dart';
 import 'package:papi_kost/core/viewmodel/utilsprovider/locationuserprovider.dart';
-import 'package:papi_kost/ui/router/router_generator.dart';
+import 'package:papi_kost/ui/router/routergenerator.dart';
 import 'package:provider/provider.dart';
 import 'core/viewmodel/uiprovider/homeprovider.dart';
 import 'core/viewmodel/uiprovider/iconhomeprovider/iconprovider.dart';
@@ -19,7 +19,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  var hasil = 0;
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -34,9 +33,9 @@ class _MyAppState extends State<MyApp> {
       ],
       child: Consumer<ThemeProvider>(builder: (context, themeProvider, _) {
         return MaterialApp(
-          debugShowCheckedModeBanner: false,
+          debugShowCheckedModeBanner: true,
           theme: themeProvider.theme,
-          initialRoute: RouterGenerator.routeOnboard,
+          initialRoute: RouterGenerator.routeHome,
           onGenerateRoute: RouterGenerator.generateRoute,
         );
       }),

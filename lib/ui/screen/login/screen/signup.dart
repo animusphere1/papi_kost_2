@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:papi_kost/core/viewmodel/uiprovider/signupprovider.dart';
-import 'package:papi_kost/ui/constant/enum.dart';
+import 'package:papi_kost/ui/enum/enum.dart';
 import 'package:papi_kost/ui/screen/login/widget/widget.dart';
 import 'package:provider/provider.dart';
 import 'package:supercharged/supercharged.dart';

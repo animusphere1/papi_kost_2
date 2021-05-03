@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:papi_kost/core/viewmodel/uiprovider/signupprovider.dart';
-import 'package:papi_kost/ui/router/router_generator.dart';
+import 'package:papi_kost/ui/globalfunction/constantnavigate.dart';
+import 'package:papi_kost/ui/router/routergenerator.dart';
 import 'package:papi_kost/ui/screen/login/widget/widget.dart';
-import 'package:provider/provider.dart';
 import 'package:supercharged/supercharged.dart';
-import 'package:papi_kost/ui/constant/enum.dart';
+import 'package:papi_kost/ui/enum/enum.dart';
 
 class LoginPage extends StatefulWidget {
   final PageController pageController;
@@ -17,6 +16,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  bool muncul = true;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -80,7 +81,9 @@ class _LoginPageState extends State<LoginPage> {
               titleButton: 'Log in',
               colorButtonBackground: Theme.of(context).accentColor,
               colorTitleButton: Theme.of(context).backgroundColor,
-              onClick: () => pindah(context, RouterGenerator.routeHome),
+              onClick: () {
+                moveToNewPageCanntBack(context, RouterGenerator.routeHome);
+              },
             ),
           ),
           textForgotPassword(context),
@@ -88,14 +91,6 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
-
-  pindah(BuildContext context, String route) {
-    // Navigator.pushNamedAndRemoveUntil(context, route, (route) => false);
-  }
-
-  // pindah() {
-  //   Navigator.pop(context, true);
-  // }
 
   Widget textForgotPassword(BuildContext context) {
     return Text(
@@ -138,8 +133,10 @@ class _LoginPageState extends State<LoginPage> {
       child: Container(
         child: GestureDetector(
           onTap: () {
-            Provider.of<SignUpProvider>(context, listen: false)
-                .goToSignUp(widget.pageController, context);
+            // moveToNewPageCanntBack(context, RouterGenerator.routeHome);
+            setState(() {
+              muncul = !muncul;
+            });
           },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
